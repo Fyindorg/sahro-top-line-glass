@@ -1,0 +1,96 @@
+import { Link } from "@tanstack/react-router";
+import { useState } from "react";
+import { CATEGORIES, categorySlug, waLink } from "@/lib/products";
+import { Menu, X, MessageCircle, ChevronDown } from "lucide-react";
+
+type NavItem = { to: "/about" | "/products" | "/catalogues" | "/contact"; label: string; hasDropdown?: boolean };
+const NAV: NavItem[] = [
+  { to: "/about", label: "About Us" },
+  { to: "/products", label: "Products", hasDropdown: true },
+  { to: "/catalogues", label: "Catalogues" },
+  { to: "/contact", label: "Contact Us" },
+];
+
+export function SiteHeader() {
+  const [open, setOpen] = useState(false);
+  const enquiry = waLink("Hi, I would like to send an enquiry about Sahro Top Line Glass Accessories products.");
+
+  return (
+    <header className="sticky top-0 z-50 border-b border-border bg-background/85 backdrop-blur-md">
+      <div className="container-tight flex h-16 items-center justify-between gap-6">
+        <Link to="/" className="flex items-center gap-2 group">
+          <div className="grid h-9 w-9 place-items-center rounded-md gradient-brand text-brand-foreground font-display text-lg">S</div>
+          <div className="leading-tight">
+            <div className="text-[15px] font-semibold tracking-tight">SAHRO TOP LINE</div>
+            <div className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground">Glass Accessories</div>
+          </div>
+        </Link>
+
+        <nav className="hidden lg:flex items-center gap-1">
+          {NAV.map((n) => (
+            <div key={n.to} className="relative group/nav">
+              <Link
+                to={n.to}
+                className="inline-flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"
+                activeProps={{ className: "text-foreground" }}
+              >
+                {n.label}
+                {n.hasDropdown && <ChevronDown className="h-3.5 w-3.5 opacity-60" />}
+              </Link>
+              {n.hasDropdown && (
+                <div className="invisible opacity-0 translate-y-1 group-hover/nav:visible group-hover/nav:opacity-100 group-hover/nav:translate-y-0 transition-all duration-200 absolute left-1/2 -translate-x-1/2 top-full pt-2 w-[640px]">
+                  <div className="rounded-xl border border-border bg-popover shadow-lift p-2 grid grid-cols-2 gap-1">
+                    {CATEGORIES.map((c) => (
+                      <Link
+                        key={c}
+                        to="/products/$category"
+                        params={{ category: categorySlug(c) }}
+                        className="rounded-md px-3 py-2 text-sm hover:bg-accent transition-colors flex items-center justify-between"
+                      >
+                        <span>{c}</span>
+                        <span className="text-xs text-muted-foreground opacity-0 group-hover/nav:opacity-100">→</span>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
+        </nav>
+
+        <div className="flex items-center gap-2">
+          <a
+            href={enquiry}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden sm:inline-flex items-center gap-2 rounded-md gradient-gold px-4 py-2 text-sm font-semibold text-gold-foreground shadow-card lift"
+          >
+            <MessageCircle className="h-4 w-4" /> Send Enquiry
+          </a>
+          <button
+            onClick={() => setOpen((o) => !o)}
+            className="lg:hidden inline-flex h-9 w-9 items-center justify-center rounded-md border border-border"
+            aria-label="Toggle menu"
+          >
+            {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+          </button>
+        </div>
+      </div>
+
+      {open && (
+        <div className="lg:hidden border-t border-border bg-background">
+          <div className="container-tight py-3 flex flex-col">
+            {NAV.map((n) => (
+              <Link key={n.to} to={n.to} className="py-2 text-sm font-medium" onClick={() => setOpen(false)}>
+                {n.label}
+              </Link>
+            ))}
+            <a href={enquiry} target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex items-center justify-center gap-2 rounded-md gradient-gold px-4 py-2 text-sm font-semibold text-gold-foreground">
+              <MessageCircle className="h-4 w-4" /> Send Enquiry
+            </a>
+          </div>
+        </div>
+      )}
+    </header>
+  );
+}
