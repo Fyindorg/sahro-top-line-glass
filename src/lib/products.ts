@@ -10,7 +10,7 @@ export interface Product {
 }
 
 export const CATEGORIES: string[] = data.categories;
-export const PRODUCTS: Product[] = data.products as Product[];
+export const PRODUCTS: Product[] = data.products as unknown as Product[];
 
 export const categorySlug = (c: string) =>
   c.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");

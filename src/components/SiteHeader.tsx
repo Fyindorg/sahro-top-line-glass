@@ -3,12 +3,13 @@ import { useState } from "react";
 import { CATEGORIES, categorySlug, waLink } from "@/lib/products";
 import { Menu, X, MessageCircle, ChevronDown } from "lucide-react";
 
-const NAV = [
+type NavItem = { to: "/about" | "/products" | "/catalogues" | "/contact"; label: string; hasDropdown?: boolean };
+const NAV: NavItem[] = [
   { to: "/about", label: "About Us" },
   { to: "/products", label: "Products", hasDropdown: true },
   { to: "/catalogues", label: "Catalogues" },
   { to: "/contact", label: "Contact Us" },
-] as const;
+];
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
