@@ -55,13 +55,15 @@ function Home() {
       <section className="border-b border-border bg-surface">
         <div className="container-tight grid grid-cols-2 md:grid-cols-4 gap-6 py-10">
           {[
-            { v: "20,000+", l: "sqm of factories & showrooms" },
-            { v: "2", l: "factories, 2 showrooms" },
-            { v: "90%+", l: "exported to GCC markets" },
-            { v: "583+", l: "products in our catalogue" },
+            { n: 20000, suffix: "+ sqm", l: "of factories & showrooms" },
+            { n: 2, suffix: "", l: "factories, 2 showrooms" },
+            { n: 90, suffix: "%+", l: "exported to GCC markets" },
+            { n: 350, suffix: "+", l: "products in our catalogue" },
           ].map((s) => (
             <div key={s.l} className="text-center md:text-left">
-              <div className="font-display text-3xl text-foreground">{s.v}</div>
+              <div className="font-display text-3xl font-bold text-foreground">
+                <CountUp end={s.n} suffix={s.suffix} />
+              </div>
               <div className="text-xs text-muted-foreground mt-1">{s.l}</div>
             </div>
           ))}
