@@ -15,9 +15,9 @@ function formatSize(bytes: number) {
 export const Route = createFileRoute("/catalogues")({
   head: () => ({
     meta: [
-      { title: "Catalogues — Glass Hardware & Bathroom Accessories | Sahro Top Line" },
-      { name: "description", content: "Download Sahro Top Line product catalogues for glass clamps, hinges, connectors, bathroom mirrors, floor springs and door hardware. Manufacturer-direct, Riyadh KSA." },
-      { property: "og:title", content: "Catalogues | Sahro Top Line" },
+      { title: "Catalogues — Glass Hardware & Bathroom Accessories | Top Line Glass Products Accessories" },
+      { name: "description", content: "Download Top Line Glass Products Accessories product catalogues for glass clamps, hinges, connectors, bathroom mirrors, floor springs and door hardware. Manufacturer-direct, Riyadh KSA." },
+      { property: "og:title", content: "Catalogues | Top Line Glass Products Accessories" },
       { property: "og:description", content: "Browse and download our latest product catalogues." },
       { property: "og:url", content: "/catalogues" },
     ],

@@ -8,9 +8,9 @@ import { Search } from "lucide-react";
 export const Route = createFileRoute("/products/")({
   head: () => ({
     meta: [
-      { title: "Products — Glass Hardware, Bathroom Accessories & Door Fittings | Sahro Top Line" },
+      { title: "Products — Glass Hardware, Bathroom Accessories & Door Fittings | Top Line Glass Products Accessories" },
       { name: "description", content: "Browse 500+ premium glass clamps, glass connectors, shower hinges, floor springs, bathroom mirrors, door knobs and locks. Manufacturer pricing from Riyadh, KSA." },
-      { property: "og:title", content: "Products — Sahro Top Line Glass Accessories" },
+      { property: "og:title", content: "Products — Top Line Glass Products Accessories" },
       { property: "og:description", content: "Complete catalogue of premium glass door hardware and bathroom accessories." },
       { property: "og:url", content: "/products" },
     ],

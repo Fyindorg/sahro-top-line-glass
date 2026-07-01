@@ -6,9 +6,9 @@ import { Factory, ShieldCheck } from "lucide-react";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About Us — Sahro Top Line Glass Accessories Manufacturer | Riyadh, KSA" },
-      { name: "description", content: "Sahro Top Line is a leading Middle East manufacturer of glass door control systems, bathroom accessories and door & window hardware. Two factories, two showrooms, 20,000 sqm." },
-      { property: "og:title", content: "About Sahro Top Line — Glass Hardware Manufacturer" },
+      { title: "About Us — Top Line Glass Products Accessories Manufacturer | Riyadh, KSA" },
+      { name: "description", content: "Top Line Glass Products Accessories is a leading Middle East manufacturer of glass door control systems, bathroom accessories and door & window hardware. Two factories, two showrooms, 20,000 sqm." },
+      { property: "og:title", content: "About Top Line Glass Products Accessories — Glass Hardware Manufacturer" },
       { property: "og:description", content: "In-house R&D, production and sales for glass hardware fittings, door control hardware, bathroom hardware and door & window accessories." },
       { property: "og:url", content: "/about" },
       { property: "og:image", content: "/og-about.jpg" },
@@ -26,7 +26,7 @@ function About() {
       </section>
 
       <section className="container-tight pb-10">
-        <div className="text-xs uppercase tracking-[0.22em] text-gold">About Sahro Top Line</div>
+        <div className="text-xs uppercase tracking-[0.22em] text-gold">About Top Line Glass Products Accessories</div>
         <h1 className="font-display text-5xl mt-3 max-w-3xl text-balance">A leading Middle East manufacturer of premium glass hardware &amp; bathroom accessories.</h1>
       </section>
 
@@ -53,7 +53,7 @@ function About() {
         </div>
         <div className="lg:col-span-2">
           <div className="group overflow-hidden rounded-2xl shadow-card">
-            <img src={about} alt="Luxury bathroom with frameless glass shower and premium hardware by Sahro Top Line" className="aspect-[4/5] w-full object-cover img-zoom" loading="lazy" width={1400} height={960} />
+            <img src={about} alt="Luxury bathroom with frameless glass shower and premium hardware by Top Line Glass Products Accessories" className="aspect-[4/5] w-full object-cover img-zoom" loading="lazy" width={1400} height={960} />
           </div>
         </div>
       </section>

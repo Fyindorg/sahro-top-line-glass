@@ -9,9 +9,9 @@ import { CountUp } from "@/components/CountUp";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Sahro Top Line — Glass Door Hardware & Bathroom Accessories Manufacturer | KSA" },
+      { title: "Top Line Glass Products Accessories — Glass Door Hardware & Bathroom Accessories Manufacturer | KSA" },
       { name: "description", content: "Premium glass clamps, shower hinges, glass connectors, bathroom mirrors and door hardware. Direct manufacturer with two factories & two showrooms in Saudi Arabia." },
-      { property: "og:title", content: "Sahro Top Line — Glass Hardware & Bathroom Accessories" },
+      { property: "og:title", content: "Top Line Glass Products Accessories — Glass Hardware & Bathroom Accessories" },
       { property: "og:description", content: "Direct manufacturer serving KSA, UAE, Bahrain & Kuwait with premium glass door control systems and bathroom hardware." },
       { property: "og:url", content: "/" },
       { property: "og:image", content: "/og-home.jpg" },
@@ -37,7 +37,7 @@ function Home() {
             Premium glass hardware &amp; bathroom accessories, engineered in-house.
           </h1>
           <p className="mt-6 text-lg text-primary-foreground/80 max-w-2xl anim-fade-up">
-            Sahro Top Line manufactures glass door control systems, frameless shower hardware,
+            Top Line Glass Products Accessories manufactures glass door control systems, frameless shower hardware,
             bathroom mirrors and door &amp; window fittings — exported to over five GCC markets.
           </p>
           <div className="mt-8 flex flex-wrap gap-3 anim-fade-up">

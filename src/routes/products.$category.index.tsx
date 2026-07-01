@@ -12,13 +12,13 @@ export const Route = createFileRoute("/products/$category/")({
   head: ({ params }) => {
     const cat = CATEGORY_BY_SLUG[params.category] ?? "Products";
     const count = productsByCategory(params.category).length;
-    const title = `${cat} — Premium ${cat} for Bathrooms & Glass Doors | Sahro Top Line KSA`;
-    const desc = `Shop ${count}+ ${cat.toLowerCase()} from Sahro Top Line. Manufacturer-direct pricing on premium ${cat.toLowerCase()} for showers, glass doors and bathrooms across Saudi Arabia & GCC.`;
+    const title = `${cat} — Premium ${cat} for Bathrooms & Glass Doors | Top Line Glass Products Accessories KSA`;
+    const desc = `Shop ${count}+ ${cat.toLowerCase()} from Top Line Glass Products Accessories. Manufacturer-direct pricing on premium ${cat.toLowerCase()} for showers, glass doors and bathrooms across Saudi Arabia & GCC.`;
     return {
       meta: [
         { title },
         { name: "description", content: desc },
-        { property: "og:title", content: `${cat} | Sahro Top Line` },
+        { property: "og:title", content: `${cat} | Top Line Glass Products Accessories` },
         { property: "og:description", content: desc },
         { property: "og:url", content: `/products/${params.category}` },
       ],
