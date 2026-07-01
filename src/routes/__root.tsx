@@ -13,6 +13,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
+import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 
 function NotFoundComponent() {
   return (
@@ -49,13 +50,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Sahro Top Line — Premium Glass Door Hardware & Bathroom Accessories | KSA" },
-      { name: "description", content: "Sahro Top Line is a leading Middle East manufacturer of glass door control systems, bathroom accessories, glass clamps, hinges, mirrors and door & window hardware. Showrooms in Riyadh, KSA." },
-      { name: "author", content: "Sahro Top Line Glass Accessories" },
-      { name: "keywords", content: "glass door hardware Saudi Arabia, bathroom accessories KSA, glass clamps, shower hinges, frameless shower hardware, bathroom mirrors Riyadh, glass connectors, floor springs, Sahro Top Line" },
-      { property: "og:site_name", content: "Sahro Top Line" },
+      { title: "Top Line Glass Products Accessories — Premium Glass Door Hardware & Bathroom Accessories | KSA" },
+      { name: "description", content: "Top Line Glass Products Accessories is a leading Middle East manufacturer of glass door control systems, bathroom accessories, glass clamps, hinges, mirrors and door & window hardware. Showrooms in Riyadh, KSA." },
+      { name: "author", content: "Top Line Glass Products Accessories" },
+      { name: "keywords", content: "glass door hardware Saudi Arabia, bathroom accessories KSA, glass clamps, shower hinges, frameless shower hardware, bathroom mirrors Riyadh, glass connectors, floor springs, Top Line Glass Products Accessories" },
+      { property: "og:site_name", content: "Top Line Glass Products Accessories" },
       { property: "og:type", content: "website" },
-      { property: "og:title", content: "Sahro Top Line — Premium Glass Door Hardware & Bathroom Accessories" },
+      { property: "og:title", content: "Top Line Glass Products Accessories — Premium Glass Door Hardware & Bathroom Accessories" },
       { property: "og:description", content: "Leading manufacturer of glass hardware, bathroom accessories and door & window fittings serving Saudi Arabia, UAE, Bahrain & Kuwait." },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -63,7 +64,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" },
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" },
       { rel: "icon", href: "/favicon.ico" },
     ],
     scripts: [{
@@ -71,7 +72,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       children: JSON.stringify({
         "@context": "https://schema.org",
         "@type": "Organization",
-        name: "Sahro Top Line Glass Accessories",
+        name: "Top Line Glass Products Accessories",
         url: "/",
         description: "Leading Middle East manufacturer of glass door control systems, bathroom accessories and door & window hardware.",
         address: {
@@ -108,6 +109,7 @@ function RootComponent() {
         <SiteHeader />
         <main className="flex-1"><Outlet /></main>
         <SiteFooter />
+        <WhatsAppFloat />
       </div>
     </QueryClientProvider>
   );

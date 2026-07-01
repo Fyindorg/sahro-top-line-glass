@@ -1,7 +1,9 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { CATEGORIES, categorySlug, waLink } from "@/lib/products";
-import { Menu, X, MessageCircle, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
+import { WhatsAppIcon } from "./WhatsAppIcon";
+import logo from "@/assets/sahro-logo.png.asset.json";
 
 type NavItem = { to: "/about" | "/products" | "/catalogues" | "/contact"; label: string; hasDropdown?: boolean };
 const NAV: NavItem[] = [
@@ -13,16 +15,16 @@ const NAV: NavItem[] = [
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
-  const enquiry = waLink("Hi, I would like to send an enquiry about Sahro Top Line Glass Accessories products.");
+  const enquiry = waLink("Hi, I would like to send an enquiry about Top Line Glass Products Accessories.");
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/85 backdrop-blur-md">
+    <header className="sticky top-0 z-40 border-b border-border bg-background/85 backdrop-blur-md">
       <div className="container-tight flex h-16 items-center justify-between gap-6">
-        <Link to="/" className="flex items-center gap-2 group">
-          <div className="grid h-9 w-9 place-items-center rounded-md gradient-brand text-brand-foreground font-display text-lg">S</div>
-          <div className="leading-tight">
-            <div className="text-[15px] font-semibold tracking-tight">SAHRO TOP LINE</div>
-            <div className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground">Glass Accessories</div>
+        <Link to="/" className="flex items-center gap-3 group">
+          <img src={logo.url} alt="Top Line Glass Products Accessories" className="h-10 w-auto transition-transform group-hover:scale-105" width={80} height={40} />
+          <div className="leading-tight hidden sm:block">
+            <div className="text-[13px] font-semibold tracking-tight">Top Line Glass Products Accessories</div>
+            <div className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground">Manufacturer · Riyadh</div>
           </div>
         </Link>
 
@@ -63,9 +65,10 @@ export function SiteHeader() {
             href={enquiry}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden sm:inline-flex items-center gap-2 rounded-md gradient-gold px-4 py-2 text-sm font-semibold text-gold-foreground shadow-card lift"
+            className="hidden sm:inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm font-semibold text-white shadow-card lift"
+            style={{ backgroundColor: "#25D366" }}
           >
-            <MessageCircle className="h-4 w-4" /> Send Enquiry
+            <WhatsAppIcon className="h-4 w-4" /> Send Enquiry
           </a>
           <button
             onClick={() => setOpen((o) => !o)}
@@ -85,8 +88,8 @@ export function SiteHeader() {
                 {n.label}
               </Link>
             ))}
-            <a href={enquiry} target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex items-center justify-center gap-2 rounded-md gradient-gold px-4 py-2 text-sm font-semibold text-gold-foreground">
-              <MessageCircle className="h-4 w-4" /> Send Enquiry
+            <a href={enquiry} target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-semibold text-white" style={{ backgroundColor: "#25D366" }}>
+              <WhatsAppIcon className="h-4 w-4" /> Send Enquiry
             </a>
           </div>
         </div>

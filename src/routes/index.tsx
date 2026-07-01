@@ -2,14 +2,16 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { CATEGORIES, categorySlug, countByCategory, waLink } from "@/lib/products";
 import hero from "@/assets/hero.jpg";
 import about from "@/assets/about.jpg";
-import { ArrowRight, Factory, ShieldCheck, Globe2, MessageCircle } from "lucide-react";
+import { ArrowRight, Factory, ShieldCheck, Globe2 } from "lucide-react";
+import { WhatsAppIcon } from "@/components/WhatsAppIcon";
+import { CountUp } from "@/components/CountUp";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Sahro Top Line — Glass Door Hardware & Bathroom Accessories Manufacturer | KSA" },
+      { title: "Top Line Glass Products Accessories — Glass Door Hardware & Bathroom Accessories Manufacturer | KSA" },
       { name: "description", content: "Premium glass clamps, shower hinges, glass connectors, bathroom mirrors and door hardware. Direct manufacturer with two factories & two showrooms in Saudi Arabia." },
-      { property: "og:title", content: "Sahro Top Line — Glass Hardware & Bathroom Accessories" },
+      { property: "og:title", content: "Top Line Glass Products Accessories — Glass Hardware & Bathroom Accessories" },
       { property: "og:description", content: "Direct manufacturer serving KSA, UAE, Bahrain & Kuwait with premium glass door control systems and bathroom hardware." },
       { property: "og:url", content: "/" },
       { property: "og:image", content: "/og-home.jpg" },
@@ -35,15 +37,15 @@ function Home() {
             Premium glass hardware &amp; bathroom accessories, engineered in-house.
           </h1>
           <p className="mt-6 text-lg text-primary-foreground/80 max-w-2xl anim-fade-up">
-            Sahro Top Line manufactures glass door control systems, frameless shower hardware,
+            Top Line Glass Products Accessories manufactures glass door control systems, frameless shower hardware,
             bathroom mirrors and door &amp; window fittings — exported to over five GCC markets.
           </p>
           <div className="mt-8 flex flex-wrap gap-3 anim-fade-up">
             <Link to="/products" className="inline-flex items-center gap-2 rounded-md gradient-gold px-5 py-3 text-sm font-semibold text-gold-foreground lift">
               Explore Products <ArrowRight className="h-4 w-4" />
             </Link>
-            <a href={waLink("Hi, I would like to send an enquiry about Sahro Top Line products.")} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-md border border-white/20 bg-white/5 px-5 py-3 text-sm font-semibold backdrop-blur hover:bg-white/10">
-              <MessageCircle className="h-4 w-4" /> Send Enquiry on WhatsApp
+            <a href={waLink("Hi, I would like to send an enquiry about Top Line Glass Products Accessories.")} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-md border border-white/20 bg-white/5 px-5 py-3 text-sm font-semibold backdrop-blur hover:bg-white/10">
+              <WhatsAppIcon className="h-4 w-4" /> Send Enquiry on WhatsApp
             </a>
           </div>
         </div>
@@ -53,13 +55,15 @@ function Home() {
       <section className="border-b border-border bg-surface">
         <div className="container-tight grid grid-cols-2 md:grid-cols-4 gap-6 py-10">
           {[
-            { v: "20,000+", l: "sqm of factories & showrooms" },
-            { v: "2", l: "factories, 2 showrooms" },
-            { v: "90%+", l: "exported to GCC markets" },
-            { v: "583+", l: "products in our catalogue" },
+            { n: 20000, suffix: "+ sqm", l: "of factories & showrooms" },
+            { n: 2, suffix: "", l: "factories, 2 showrooms" },
+            { n: 90, suffix: "%+", l: "exported to GCC markets" },
+            { n: 350, suffix: "+", l: "products in our catalogue" },
           ].map((s) => (
             <div key={s.l} className="text-center md:text-left">
-              <div className="font-display text-3xl text-foreground">{s.v}</div>
+              <div className="font-display text-3xl font-bold text-foreground">
+                <CountUp end={s.n} suffix={s.suffix} />
+              </div>
               <div className="text-xs text-muted-foreground mt-1">{s.l}</div>
             </div>
           ))}
@@ -128,7 +132,7 @@ function Home() {
         <h2 className="font-display text-4xl">Ready to specify the right hardware?</h2>
         <p className="mt-3 text-muted-foreground max-w-xl mx-auto">Talk to our team for catalogues, quantity pricing and project consultation.</p>
         <div className="mt-6 flex justify-center gap-3 flex-wrap">
-          <a href={waLink("Hi, I would like to send an enquiry about Sahro Top Line products.")} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-md gradient-gold px-5 py-3 text-sm font-semibold text-gold-foreground lift"><MessageCircle className="h-4 w-4" /> WhatsApp Enquiry</a>
+          <a href={waLink("Hi, I would like to send an enquiry about Top Line Glass Products Accessories.")} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-md px-5 py-3 text-sm font-semibold text-white lift" style={{ backgroundColor: "#25D366" }}><WhatsAppIcon className="h-4 w-4" /> WhatsApp Enquiry</a>
           <Link to="/contact" className="inline-flex items-center gap-2 rounded-md border border-input bg-background px-5 py-3 text-sm font-semibold">Contact Us</Link>
         </div>
       </section>

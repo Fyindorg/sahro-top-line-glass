@@ -8,9 +8,9 @@ import { Search } from "lucide-react";
 export const Route = createFileRoute("/products/")({
   head: () => ({
     meta: [
-      { title: "Products — Glass Hardware, Bathroom Accessories & Door Fittings | Sahro Top Line" },
+      { title: "Products — Glass Hardware, Bathroom Accessories & Door Fittings | Top Line Glass Products Accessories" },
       { name: "description", content: "Browse 500+ premium glass clamps, glass connectors, shower hinges, floor springs, bathroom mirrors, door knobs and locks. Manufacturer pricing from Riyadh, KSA." },
-      { property: "og:title", content: "Products — Sahro Top Line Glass Accessories" },
+      { property: "og:title", content: "Products — Top Line Glass Products Accessories" },
       { property: "og:description", content: "Complete catalogue of premium glass door hardware and bathroom accessories." },
       { property: "og:url", content: "/products" },
     ],
@@ -23,6 +23,8 @@ function ProductsIndex() {
   const counts = countByCategory();
   const navigate = useNavigate();
   const [q, setQ] = useState("");
+  const [page, setPage] = useState(1);
+  const PAGE_SIZE = 20;
 
   const filtered = useMemo(() => {
     const s = q.trim().toLowerCase();
@@ -33,6 +35,11 @@ function ProductsIndex() {
       Object.values(p.specs).some((v) => String(v).toLowerCase().includes(s))
     );
   }, [q]);
+
+  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  const currentPage = Math.min(page, totalPages);
+  const start = (currentPage - 1) * PAGE_SIZE;
+  const visible = filtered.slice(start, start + PAGE_SIZE);
 
   return (
     <div className="container-tight py-8">
@@ -66,19 +73,38 @@ function ProductsIndex() {
             <Search className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <input
               value={q}
-              onChange={(e) => setQ(e.target.value)}
+              onChange={(e) => { setQ(e.target.value); setPage(1); }}
               onKeyDown={(e) => { if (e.key === "Enter" && filtered.length === 1) navigate({ to: "/products/$category/$product", params: { category: filtered[0].categorySlug, product: filtered[0].slug } }); }}
-              placeholder="Search 500+ products by name, model or specification…"
+              placeholder="Search 350+ products by name, model or specification…"
               className="w-full rounded-md border border-input bg-background pl-10 pr-3 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
               aria-label="Search products"
             />
           </div>
-          <div className="text-xs text-muted-foreground mb-4">{filtered.length} products</div>
-          <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-5">
-            {filtered.slice(0, 60).map((p) => <ProductTile key={p.categorySlug + p.slug} p={p} />)}
+          <div className="text-xs text-muted-foreground mb-4">
+            Showing {filtered.length === 0 ? 0 : start + 1}–{Math.min(start + PAGE_SIZE, filtered.length)} of {filtered.length}
           </div>
-          {filtered.length > 60 && (
-            <div className="mt-6 text-sm text-muted-foreground">Showing first 60 of {filtered.length}. Refine your search or pick a category to see more.</div>
+          <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-5">
+            {visible.map((p) => <ProductTile key={p.categorySlug + p.slug} p={p} />)}
+          </div>
+
+          {totalPages > 1 && (
+            <div className="mt-8 flex items-center justify-between gap-3">
+              <button
+                onClick={() => setPage((p) => Math.max(1, p - 1))}
+                disabled={currentPage === 1}
+                className="rounded-md border border-input px-4 py-2 text-sm font-medium disabled:opacity-40 hover:bg-accent"
+              >
+                ← Previous
+              </button>
+              <div className="text-sm text-muted-foreground">Page {currentPage} of {totalPages}</div>
+              <button
+                onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+                disabled={currentPage === totalPages}
+                className="rounded-md border border-input px-4 py-2 text-sm font-medium disabled:opacity-40 hover:bg-accent"
+              >
+                Next →
+              </button>
+            </div>
           )}
         </div>
       </div>

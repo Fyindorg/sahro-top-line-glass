@@ -7,9 +7,9 @@ import { Mail, Phone, MapPin, MessageCircle, Send } from "lucide-react";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact Us — Sahro Top Line Glass Accessories | Riyadh, KSA" },
-      { name: "description", content: "Contact Sahro Top Line for glass door hardware, bathroom accessories and project enquiries. Riyadh KSA. Phone +966 56 450 8627 · kcdtc@gmail.com." },
-      { property: "og:title", content: "Contact Sahro Top Line | Riyadh, KSA" },
+      { title: "Contact Us — Top Line Glass Products Accessories | Riyadh, KSA" },
+      { name: "description", content: "Contact Top Line Glass Products Accessories for glass door hardware, bathroom accessories and project enquiries. Riyadh KSA. Phone +966 56 450 8627 · kcdtc@gmail.com." },
+      { property: "og:title", content: "Contact Top Line Glass Products Accessories | Riyadh, KSA" },
       { property: "og:description", content: "Get in touch for catalogues, quotations and project consultation." },
       { property: "og:url", content: "/contact" },
     ],
@@ -84,7 +84,7 @@ function Contact() {
                 <div className="font-medium leading-relaxed">JQR4+798, Al Madina Al Munawwarah Rd,<br />Al Sina'iyah, Riyadh, 12845, KSA</div>
               </div>
             </div>
-            <a href={waLink("Hi, I would like to send an enquiry about Sahro Top Line products.")} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-md bg-whatsapp px-5 py-3 text-sm font-semibold text-white lift">
+            <a href={waLink("Hi, I would like to send an enquiry about Top Line Glass Products Accessories products.")} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-md bg-whatsapp px-5 py-3 text-sm font-semibold text-white lift">
               <MessageCircle className="h-4 w-4" /> WhatsApp Us
             </a>
           </div>
@@ -92,7 +92,7 @@ function Contact() {
           <div className="rounded-2xl border border-border overflow-hidden shadow-card">
             <a href="https://share.google/P0gBPafps3B5vnC8U" target="_blank" rel="noopener noreferrer" className="block">
               <iframe
-                title="Sahro Top Line location on Google Maps"
+                title="Top Line Glass Products Accessories location on Google Maps"
                 src="https://www.google.com/maps?q=JQR4%2B798+Al+Madina+Al+Munawwarah+Rd+Al+Sina'iyah+Riyadh+12845&output=embed"
                 className="w-full aspect-[4/3] border-0"
                 loading="lazy"

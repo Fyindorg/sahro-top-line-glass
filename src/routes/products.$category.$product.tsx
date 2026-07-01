@@ -15,12 +15,12 @@ export const Route = createFileRoute("/products/$category/$product")({
     if (!p) return { meta: [{ title: "Product not found" }] };
     const cat = p.category;
     const specsText = Object.entries(p.specs).slice(0, 4).map(([k, v]) => `${k}: ${v}`).join(", ");
-    const desc = `${p.title} by Sahro Top Line — premium ${cat.toLowerCase()} for bathroom glass and door installations. ${specsText}. Order on WhatsApp.`.slice(0, 300);
+    const desc = `${p.title} by Top Line Glass Products Accessories — premium ${cat.toLowerCase()} for bathroom glass and door installations. ${specsText}. Order on WhatsApp.`.slice(0, 300);
     return {
       meta: [
-        { title: `${p.title} — ${cat} | Sahro Top Line` },
+        { title: `${p.title} — ${cat} | Top Line Glass Products Accessories` },
         { name: "description", content: desc },
-        { property: "og:title", content: `${p.title} | Sahro Top Line` },
+        { property: "og:title", content: `${p.title} | Top Line Glass Products Accessories` },
         { property: "og:description", content: desc },
         { property: "og:type", content: "product" },
         { property: "og:url", content: `/products/${params.category}/${params.product}` },
@@ -33,10 +33,10 @@ export const Route = createFileRoute("/products/$category/$product")({
           "@type": "Product",
           name: p.title,
           category: cat,
-          brand: { "@type": "Brand", name: "Sahro Top Line" },
+          brand: { "@type": "Brand", name: "Top Line Glass Products Accessories" },
           description: p.features,
           sku: p.specs.Model ?? undefined,
-          manufacturer: { "@type": "Organization", name: "Sahro Top Line Glass Accessories" },
+          manufacturer: { "@type": "Organization", name: "Top Line Glass Products Accessories" },
         }),
       }],
     };
@@ -75,7 +75,7 @@ function ProductPage() {
               <div>
                 <div className="text-[11px] uppercase tracking-[0.25em] text-muted-foreground">{p.category}</div>
                 <div className="mt-3 font-display text-5xl text-ink">{model || "TOP LINE"}</div>
-                <div className="mt-3 text-xs text-muted-foreground">Sahro Top Line · Riyadh, KSA</div>
+                <div className="mt-3 text-xs text-muted-foreground">Top Line Glass Products Accessories · Riyadh, KSA</div>
               </div>
             </div>
           </div>
@@ -123,7 +123,7 @@ function ProductPage() {
             "Premium architectural-grade alloy construction",
             "Corrosion-resistant finish for humid bathroom environments",
             "Manufactured to GCC market standards",
-            "Backed by Sahro Top Line manufacturer warranty",
+            "Backed by Top Line Glass Products Accessories manufacturer warranty",
           ].map((b) => (
             <li key={b} className="flex gap-2"><Check className="h-4 w-4 text-gold mt-0.5" /> <span>{b}</span></li>
           ))}
