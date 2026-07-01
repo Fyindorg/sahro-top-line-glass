@@ -1,13 +1,17 @@
 import { Link } from "@tanstack/react-router";
 import { CATEGORIES, categorySlug } from "@/lib/products";
 import { Mail, Phone, MapPin } from "lucide-react";
+import logo from "@/assets/sahro-logo.png.asset.json";
 
 export function SiteFooter() {
   return (
     <footer className="mt-20 border-t border-border bg-primary text-primary-foreground">
       <div className="container-tight py-14 grid gap-10 md:grid-cols-4">
         <div className="md:col-span-1">
-          <div className="font-display text-xl">Sahro Top Line</div>
+          <div className="inline-flex items-center justify-center rounded-md bg-white p-2">
+            <img src={logo.url} alt="Top Line Glass Products Accessories" className="h-10 w-auto" width={80} height={40} />
+          </div>
+          <div className="font-display text-lg mt-4 font-semibold">Top Line Glass Products Accessories</div>
           <p className="mt-3 text-sm text-primary-foreground/70 leading-relaxed">
             Premium glass door control systems, bathroom accessories, and door &amp; window hardware for the Middle East.
           </p>
