@@ -2,7 +2,9 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { CATEGORIES, categorySlug, countByCategory, waLink } from "@/lib/products";
 import hero from "@/assets/hero.jpg";
 import about from "@/assets/about.jpg";
-import { ArrowRight, Factory, ShieldCheck, Globe2, MessageCircle } from "lucide-react";
+import { ArrowRight, Factory, ShieldCheck, Globe2 } from "lucide-react";
+import { WhatsAppIcon } from "@/components/WhatsAppIcon";
+import { CountUp } from "@/components/CountUp";
 
 export const Route = createFileRoute("/")({
   head: () => ({
