@@ -21,7 +21,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 border-b border-border bg-background/85 backdrop-blur-md">
       <div className="container-tight flex h-16 items-center justify-between gap-6">
         <Link to="/" className="flex items-center gap-3 group">
-          <img src={logo.url} alt="Top Line Glass Products Accessories Glass Products Accessories" className="h-10 w-auto transition-transform group-hover:scale-105" width={80} height={40} />
+          <img src={logo.url} alt="Top Line Glass Products Accessories" className="h-10 w-auto transition-transform group-hover:scale-105" width={80} height={40} />
           <div className="leading-tight hidden sm:block">
             <div className="text-[13px] font-semibold tracking-tight">Top Line Glass Products Accessories</div>
             <div className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground">Manufacturer · Riyadh</div>
