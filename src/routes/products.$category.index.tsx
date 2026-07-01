@@ -90,17 +90,26 @@ function CategoryPage() {
             <Search className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <input
               value={q}
-              onChange={(e) => setQ(e.target.value)}
+              onChange={(e) => { setQ(e.target.value); setPage(1); }}
               onKeyDown={(e) => { if (e.key === "Enter" && filtered.length === 1) navigate({ to: "/products/$category/$product", params: { category: filtered[0].categorySlug, product: filtered[0].slug } }); }}
               placeholder={`Search ${cat.toLowerCase()}…`}
               className="w-full rounded-md border border-input bg-background pl-10 pr-3 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
               aria-label="Search products"
             />
           </div>
-          <div className="text-xs text-muted-foreground mb-4">{filtered.length} of {products.length}</div>
-          <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-5">
-            {filtered.map((p) => <ProductTile key={p.slug} p={p} />)}
+          <div className="text-xs text-muted-foreground mb-4">
+            Showing {filtered.length === 0 ? 0 : start + 1}–{Math.min(start + PAGE_SIZE, filtered.length)} of {filtered.length}
           </div>
+          <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-5">
+            {visible.map((p) => <ProductTile key={p.slug} p={p} />)}
+          </div>
+          {totalPages > 1 && (
+            <div className="mt-8 flex items-center justify-between gap-3">
+              <button onClick={() => setPage((p) => Math.max(1, p - 1))} disabled={currentPage === 1} className="rounded-md border border-input px-4 py-2 text-sm font-medium disabled:opacity-40 hover:bg-accent">← Previous</button>
+              <div className="text-sm text-muted-foreground">Page {currentPage} of {totalPages}</div>
+              <button onClick={() => setPage((p) => Math.min(totalPages, p + 1))} disabled={currentPage === totalPages} className="rounded-md border border-input px-4 py-2 text-sm font-medium disabled:opacity-40 hover:bg-accent">Next →</button>
+            </div>
+          )}
         </div>
       </div>
     </div>
