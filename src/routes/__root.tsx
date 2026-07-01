@@ -61,8 +61,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Top Line Glass Products Accessories — Premium Glass Door Hardware & Bathroom Accessories | KSA" },
       { name: "twitter:description", content: "Sahro Top Line Glass Products Accessories supplies high-quality glass door hardware, shower enclosure fittings, glass connectors, handles, locks & brackets." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/38043a91-466e-48a2-9a20-d14317d67dfa/id-preview-add7aed7--afea2f5d-b171-467c-a0c7-39e410236e90.lovable.app-1782884888252.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/38043a91-466e-48a2-9a20-d14317d67dfa/id-preview-add7aed7--afea2f5d-b171-467c-a0c7-39e410236e90.lovable.app-1782884888252.png" },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/tNRR7x7O9sPEPp7orXK2mHGKVw93/social-images/social-1782885833814-sahro-top-line-glass-accessories-opengraph.webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/tNRR7x7O9sPEPp7orXK2mHGKVw93/social-images/social-1782885833814-sahro-top-line-glass-accessories-opengraph.webp" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
