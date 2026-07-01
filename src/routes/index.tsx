@@ -132,7 +132,7 @@ function Home() {
         <h2 className="font-display text-4xl">Ready to specify the right hardware?</h2>
         <p className="mt-3 text-muted-foreground max-w-xl mx-auto">Talk to our team for catalogues, quantity pricing and project consultation.</p>
         <div className="mt-6 flex justify-center gap-3 flex-wrap">
-          <a href={waLink("Hi, I would like to send an enquiry about Sahro Top Line products.")} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-md gradient-gold px-5 py-3 text-sm font-semibold text-gold-foreground lift"><MessageCircle className="h-4 w-4" /> WhatsApp Enquiry</a>
+          <a href={waLink("Hi, I would like to send an enquiry about Top Line Glass Products Accessories.")} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-md px-5 py-3 text-sm font-semibold text-white lift" style={{ backgroundColor: "#25D366" }}><WhatsAppIcon className="h-4 w-4" /> WhatsApp Enquiry</a>
           <Link to="/contact" className="inline-flex items-center gap-2 rounded-md border border-input bg-background px-5 py-3 text-sm font-semibold">Contact Us</Link>
         </div>
       </section>
