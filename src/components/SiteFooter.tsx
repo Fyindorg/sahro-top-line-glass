@@ -48,7 +48,7 @@ export function SiteFooter() {
       </div>
       <div className="border-t border-white/10">
         <div className="container-tight py-5 text-xs text-primary-foreground/60 flex flex-wrap justify-between gap-3">
-          <span>© {new Date().getFullYear()} Sahro Top Line Glass Accessories. All rights reserved.</span>
+          <span>© {new Date().getFullYear()} Top Line Glass Products Accessories. All rights reserved.</span>
           <span>Manufacturer · Exporter · KSA</span>
         </div>
       </div>
