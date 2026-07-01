@@ -41,12 +41,19 @@ function CategoryPage() {
   const counts = countByCategory();
   const navigate = useNavigate();
   const [q, setQ] = useState("");
+  const [page, setPage] = useState(1);
+  const PAGE_SIZE = 20;
 
   const filtered = useMemo(() => {
     const s = q.trim().toLowerCase();
     if (!s) return products;
     return products.filter((p) => p.title.toLowerCase().includes(s) || Object.values(p.specs).some((v) => String(v).toLowerCase().includes(s)));
   }, [q, products]);
+
+  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  const currentPage = Math.min(page, totalPages);
+  const start = (currentPage - 1) * PAGE_SIZE;
+  const visible = filtered.slice(start, start + PAGE_SIZE);
 
   return (
     <div className="container-tight py-8">
