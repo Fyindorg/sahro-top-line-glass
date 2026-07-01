@@ -5,7 +5,7 @@ import { ProductTile } from "@/components/ProductTile";
 import { CATEGORIES, CATEGORY_BY_SLUG, categorySlug, countByCategory, productsByCategory } from "@/lib/products";
 import { Search } from "lucide-react";
 
-export const Route = createFileRoute("/products/$category")({
+export const Route = createFileRoute("/products/$category/")({
   beforeLoad: ({ params }) => {
     if (!CATEGORY_BY_SLUG[params.category]) throw notFound();
   },

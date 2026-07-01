@@ -15,7 +15,7 @@ import { Route as CataloguesRouteImport } from './routes/catalogues'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProductsIndexRouteImport } from './routes/products.index'
-import { Route as ProductsCategoryRouteImport } from './routes/products.$category'
+import { Route as ProductsCategoryIndexRouteImport } from './routes/products.$category.index'
 import { Route as ProductsCategoryProductRouteImport } from './routes/products.$category.$product'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -48,15 +48,15 @@ const ProductsIndexRoute = ProductsIndexRouteImport.update({
   path: '/products/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ProductsCategoryRoute = ProductsCategoryRouteImport.update({
-  id: '/products/$category',
-  path: '/products/$category',
+const ProductsCategoryIndexRoute = ProductsCategoryIndexRouteImport.update({
+  id: '/products/$category/',
+  path: '/products/$category/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProductsCategoryProductRoute = ProductsCategoryProductRouteImport.update({
-  id: '/$product',
-  path: '/$product',
-  getParentRoute: () => ProductsCategoryRoute,
+  id: '/products/$category/$product',
+  path: '/products/$category/$product',
+  getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -65,9 +65,9 @@ export interface FileRoutesByFullPath {
   '/catalogues': typeof CataloguesRoute
   '/contact': typeof ContactRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/products/$category': typeof ProductsCategoryRouteWithChildren
   '/products/': typeof ProductsIndexRoute
   '/products/$category/$product': typeof ProductsCategoryProductRoute
+  '/products/$category/': typeof ProductsCategoryIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -75,9 +75,9 @@ export interface FileRoutesByTo {
   '/catalogues': typeof CataloguesRoute
   '/contact': typeof ContactRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/products/$category': typeof ProductsCategoryRouteWithChildren
   '/products': typeof ProductsIndexRoute
   '/products/$category/$product': typeof ProductsCategoryProductRoute
+  '/products/$category': typeof ProductsCategoryIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -86,9 +86,9 @@ export interface FileRoutesById {
   '/catalogues': typeof CataloguesRoute
   '/contact': typeof ContactRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/products/$category': typeof ProductsCategoryRouteWithChildren
   '/products/': typeof ProductsIndexRoute
   '/products/$category/$product': typeof ProductsCategoryProductRoute
+  '/products/$category/': typeof ProductsCategoryIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -98,9 +98,9 @@ export interface FileRouteTypes {
     | '/catalogues'
     | '/contact'
     | '/sitemap.xml'
-    | '/products/$category'
     | '/products/'
     | '/products/$category/$product'
+    | '/products/$category/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -108,9 +108,9 @@ export interface FileRouteTypes {
     | '/catalogues'
     | '/contact'
     | '/sitemap.xml'
-    | '/products/$category'
     | '/products'
     | '/products/$category/$product'
+    | '/products/$category'
   id:
     | '__root__'
     | '/'
@@ -118,9 +118,9 @@ export interface FileRouteTypes {
     | '/catalogues'
     | '/contact'
     | '/sitemap.xml'
-    | '/products/$category'
     | '/products/'
     | '/products/$category/$product'
+    | '/products/$category/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -129,8 +129,9 @@ export interface RootRouteChildren {
   CataloguesRoute: typeof CataloguesRoute
   ContactRoute: typeof ContactRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
-  ProductsCategoryRoute: typeof ProductsCategoryRouteWithChildren
   ProductsIndexRoute: typeof ProductsIndexRoute
+  ProductsCategoryProductRoute: typeof ProductsCategoryProductRoute
+  ProductsCategoryIndexRoute: typeof ProductsCategoryIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -177,33 +178,22 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProductsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/products/$category': {
-      id: '/products/$category'
+    '/products/$category/': {
+      id: '/products/$category/'
       path: '/products/$category'
-      fullPath: '/products/$category'
-      preLoaderRoute: typeof ProductsCategoryRouteImport
+      fullPath: '/products/$category/'
+      preLoaderRoute: typeof ProductsCategoryIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/products/$category/$product': {
       id: '/products/$category/$product'
-      path: '/$product'
+      path: '/products/$category/$product'
       fullPath: '/products/$category/$product'
       preLoaderRoute: typeof ProductsCategoryProductRouteImport
-      parentRoute: typeof ProductsCategoryRoute
+      parentRoute: typeof rootRouteImport
     }
   }
 }
-
-interface ProductsCategoryRouteChildren {
-  ProductsCategoryProductRoute: typeof ProductsCategoryProductRoute
-}
-
-const ProductsCategoryRouteChildren: ProductsCategoryRouteChildren = {
-  ProductsCategoryProductRoute: ProductsCategoryProductRoute,
-}
-
-const ProductsCategoryRouteWithChildren =
-  ProductsCategoryRoute._addFileChildren(ProductsCategoryRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -211,8 +201,9 @@ const rootRouteChildren: RootRouteChildren = {
   CataloguesRoute: CataloguesRoute,
   ContactRoute: ContactRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
-  ProductsCategoryRoute: ProductsCategoryRouteWithChildren,
   ProductsIndexRoute: ProductsIndexRoute,
+  ProductsCategoryProductRoute: ProductsCategoryProductRoute,
+  ProductsCategoryIndexRoute: ProductsCategoryIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
