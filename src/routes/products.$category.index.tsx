@@ -60,7 +60,7 @@ function CategoryPage() {
       <Breadcrumbs items={[{ label: "Home", to: "/" }, { label: "Products", to: "/products" }, { label: cat }]} />
       <h1 className="font-display text-4xl mt-3">{cat}</h1>
       <p className="text-muted-foreground mt-2 max-w-2xl">
-        Premium {cat.toLowerCase()} by Sahro Top Line — engineered in-house for shower enclosures, glass doors and bathroom installations across the Middle East.
+        Premium {cat.toLowerCase()} by Top Line Glass Products Accessories — engineered in-house for shower enclosures, glass doors and bathroom installations across the Middle East.
       </p>
 
       <div className="mt-6 grid lg:grid-cols-[260px_1fr] gap-8">
