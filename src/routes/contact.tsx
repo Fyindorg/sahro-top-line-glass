@@ -85,16 +85,16 @@ function Contact() {
                 <div className="font-medium leading-relaxed">JQR4+798, Al Madina Al Munawwarah Rd,<br />Al Sina'iyah, Riyadh, 12845, KSA</div>
               </div>
             </div>
-            <a href={waLink("Hi, I would like to send an enquiry about Top Line Glass Products Accessories products.")} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-md bg-whatsapp px-5 py-3 text-sm font-semibold text-white lift">
-              <MessageCircle className="h-4 w-4" /> WhatsApp Us
+            <a href={waLink("Hi, I would like to send an enquiry about Top Line Glass Products Accessories products.")} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-md px-5 py-3 text-sm font-semibold text-white lift cursor-pointer" style={{ backgroundColor: "#25D366" }}>
+              <WhatsAppSolidIcon className="h-4 w-4" /> WhatsApp Us
             </a>
           </div>
 
           <div className="rounded-2xl border border-border overflow-hidden shadow-card">
-            <a href="https://share.google/P0gBPafps3B5vnC8U" target="_blank" rel="noopener noreferrer" className="block">
+            <a href="https://maps.app.goo.gl/mRdr8szVSBAR2Pin7" target="_blank" rel="noopener noreferrer" className="block">
               <iframe
                 title="Top Line Glass Products Accessories location on Google Maps"
-                src="https://www.google.com/maps?q=JQR4%2B798+Al+Madina+Al+Munawwarah+Rd+Al+Sina'iyah+Riyadh+12845&output=embed"
+                src="https://www.google.com/maps?q=%D8%B4%D8%B1%D9%83%D8%A9+%D8%AA%D9%88%D8%A8+%D9%84%D8%A7%D9%8A%D9%86+%D9%84%D9%85%D9%86%D8%AA%D8%AC%D8%A7%D8%AA+%D9%88%D8%A7%D9%83%D8%B3%D8%B3%D9%88%D8%A7%D8%B1%D8%A7%D8%AA+%D8%A7%D9%84%D8%B2%D8%AC%D8%A7%D8%AC+Riyadh&output=embed"
                 className="w-full aspect-[4/3] border-0"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
