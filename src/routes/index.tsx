@@ -25,7 +25,6 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
-  const counts = countByCategory();
   return (
     <div>
       {/* HERO */}
