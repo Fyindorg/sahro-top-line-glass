@@ -2,7 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { waLink } from "@/lib/products";
-import { Mail, Phone, MapPin, MessageCircle, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { WhatsAppSolidIcon } from "@/components/WhatsAppIcon";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -55,7 +56,7 @@ function Contact() {
             <span className="text-xs font-medium text-muted-foreground">Message</span>
             <textarea required rows={5} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} className="mt-1 w-full rounded-md border border-input bg-background px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring resize-none" />
           </label>
-          <button type="submit" className="inline-flex items-center gap-2 rounded-md gradient-gold px-5 py-3 text-sm font-semibold text-gold-foreground lift">
+          <button type="submit" className="inline-flex items-center gap-2 rounded-md gradient-gold px-5 py-3 text-sm font-semibold text-gold-foreground lift cursor-pointer hover:opacity-95">
             <Send className="h-4 w-4" /> Send Message
           </button>
           {sent && <div className="text-xs text-muted-foreground">Opening WhatsApp with your message…</div>}
@@ -84,16 +85,16 @@ function Contact() {
                 <div className="font-medium leading-relaxed">JQR4+798, Al Madina Al Munawwarah Rd,<br />Al Sina'iyah, Riyadh, 12845, KSA</div>
               </div>
             </div>
-            <a href={waLink("Hi, I would like to send an enquiry about Top Line Glass Products Accessories products.")} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-md bg-whatsapp px-5 py-3 text-sm font-semibold text-white lift">
-              <MessageCircle className="h-4 w-4" /> WhatsApp Us
+            <a href={waLink("Hi, I would like to send an enquiry about Top Line Glass Products Accessories products.")} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-md px-5 py-3 text-sm font-semibold text-white lift cursor-pointer" style={{ backgroundColor: "#25D366" }}>
+              <WhatsAppSolidIcon className="h-4 w-4" /> WhatsApp Us
             </a>
           </div>
 
           <div className="rounded-2xl border border-border overflow-hidden shadow-card">
-            <a href="https://share.google/P0gBPafps3B5vnC8U" target="_blank" rel="noopener noreferrer" className="block">
+            <a href="https://maps.app.goo.gl/mRdr8szVSBAR2Pin7" target="_blank" rel="noopener noreferrer" className="block">
               <iframe
                 title="Top Line Glass Products Accessories location on Google Maps"
-                src="https://www.google.com/maps?q=JQR4%2B798+Al+Madina+Al+Munawwarah+Rd+Al+Sina'iyah+Riyadh+12845&output=embed"
+                src="https://www.google.com/maps?q=%D8%B4%D8%B1%D9%83%D8%A9+%D8%AA%D9%88%D8%A8+%D9%84%D8%A7%D9%8A%D9%86+%D9%84%D9%85%D9%86%D8%AA%D8%AC%D8%A7%D8%AA+%D9%88%D8%A7%D9%83%D8%B3%D8%B3%D9%88%D8%A7%D8%B1%D8%A7%D8%AA+%D8%A7%D9%84%D8%B2%D8%AC%D8%A7%D8%AC+Riyadh&output=embed"
                 className="w-full aspect-[4/3] border-0"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"

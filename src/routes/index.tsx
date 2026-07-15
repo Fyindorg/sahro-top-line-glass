@@ -1,10 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { CATEGORIES, categorySlug, countByCategory, waLink } from "@/lib/products";
+import { useRef } from "react";
+import { CATEGORIES, PRODUCTS, categorySlug, waLink, type Product } from "@/lib/products";
 import hero from "@/assets/hero.jpg";
 import about from "@/assets/about.jpg";
-import { ArrowRight, Factory, ShieldCheck, Globe2 } from "lucide-react";
-import { WhatsAppIcon } from "@/components/WhatsAppIcon";
+import productBg from "@/assets/product-bg.jpg";
+import { ArrowRight, ChevronLeft, ChevronRight, Factory, ShieldCheck, Globe2 } from "lucide-react";
+import { WhatsAppSolidIcon } from "@/components/WhatsAppIcon";
 import { CountUp } from "@/components/CountUp";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -22,7 +25,6 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
-  const counts = countByCategory();
   return (
     <div>
       {/* HERO */}
@@ -45,7 +47,7 @@ function Home() {
               Explore Products <ArrowRight className="h-4 w-4" />
             </Link>
             <a href={waLink("Hi, I would like to send an enquiry about Top Line Glass Products Accessories.")} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-md border border-white/20 bg-white/5 px-5 py-3 text-sm font-semibold backdrop-blur hover:bg-white/10">
-              <WhatsAppIcon className="h-4 w-4" /> Send Enquiry on WhatsApp
+              <WhatsAppSolidIcon className="h-4 w-4" /> Send Enquiry on WhatsApp
             </a>
           </div>
         </div>
@@ -70,35 +72,25 @@ function Home() {
         </div>
       </section>
 
-      {/* CATEGORIES */}
-      <section className="container-tight py-20">
-        <div className="flex items-end justify-between flex-wrap gap-4 mb-10">
+      {/* CATEGORY STRIPS */}
+      <section className="container-tight py-16">
+        <div className="flex items-end justify-between flex-wrap gap-4 mb-8">
           <div>
             <div className="text-xs uppercase tracking-[0.22em] text-gold">Product Range</div>
-            <h2 className="font-display text-4xl mt-2">15 categories, hundreds of SKUs</h2>
+            <h2 className="font-display text-4xl mt-2">{CATEGORIES.length} categories, {PRODUCTS.length}+ SKUs</h2>
           </div>
           <Link to="/products" className="text-sm font-medium underline-grow">View all products →</Link>
         </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {CATEGORIES.map((c) => {
-            const slug = categorySlug(c);
-            return (
-              <Link
-                key={c}
-                to="/products/$category"
-                params={{ category: slug }}
-                className="group rounded-xl border border-border bg-card p-6 lift relative overflow-hidden"
-              >
-                <div className="text-xs text-muted-foreground">{counts[slug] ?? 0} products</div>
-                <div className="mt-2 font-display text-xl group-hover:text-gold transition-colors">{c}</div>
-                <ArrowRight className="absolute right-5 bottom-5 h-4 w-4 text-muted-foreground group-hover:text-gold group-hover:translate-x-1 transition-all" />
-              </Link>
-            );
-          })}
+
+        <div className="space-y-10">
+          {CATEGORIES.map((c, idx) => (
+            <CategoryStrip key={c} category={c} variant={idx % 4} />
+          ))}
         </div>
       </section>
 
       {/* WHY */}
+
       <section className="bg-surface border-y border-border">
         <div className="container-tight py-20 grid lg:grid-cols-2 gap-12 items-center">
           <div className="group overflow-hidden rounded-2xl shadow-card">
@@ -132,10 +124,68 @@ function Home() {
         <h2 className="font-display text-4xl">Ready to specify the right hardware?</h2>
         <p className="mt-3 text-muted-foreground max-w-xl mx-auto">Talk to our team for catalogues, quantity pricing and project consultation.</p>
         <div className="mt-6 flex justify-center gap-3 flex-wrap">
-          <a href={waLink("Hi, I would like to send an enquiry about Top Line Glass Products Accessories.")} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-md px-5 py-3 text-sm font-semibold text-white lift" style={{ backgroundColor: "#25D366" }}><WhatsAppIcon className="h-4 w-4" /> WhatsApp Enquiry</a>
+          <a href={waLink("Hi, I would like to send an enquiry about Top Line Glass Products Accessories.")} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-md px-5 py-3 text-sm font-semibold text-white lift" style={{ backgroundColor: "#25D366" }}><WhatsAppSolidIcon className="h-4 w-4" /> WhatsApp Enquiry</a>
           <Link to="/contact" className="inline-flex items-center gap-2 rounded-md border border-input bg-background px-5 py-3 text-sm font-semibold">Contact Us</Link>
         </div>
       </section>
     </div>
+  );
+}
+
+const STRIP_VARIANTS = [
+  { wrap: "bg-gradient-to-br from-primary via-primary to-primary/90 text-primary-foreground border-primary", label: "text-gold", title: "text-primary-foreground", card: "bg-white/5 border-white/10 hover:bg-white/10", cardTitle: "text-primary-foreground", cardMeta: "text-primary-foreground/60", btn: "bg-white/10 hover:bg-white/20 text-white border-white/20", accent: "bg-gold" },
+  { wrap: "bg-gradient-to-r from-amber-50 via-orange-50 to-amber-50 text-foreground border-amber-200", label: "text-amber-700", title: "text-foreground", card: "bg-white border-amber-200 hover:border-amber-400 shadow-sm", cardTitle: "text-foreground", cardMeta: "text-muted-foreground", btn: "bg-white hover:bg-amber-100 text-amber-900 border-amber-300", accent: "bg-amber-500" },
+  { wrap: "bg-slate-50 text-foreground border-slate-200", label: "text-slate-600", title: "text-slate-900", card: "bg-white border-slate-200 hover:border-slate-400 shadow-sm", cardTitle: "text-slate-900", cardMeta: "text-slate-500", btn: "bg-slate-900 hover:bg-slate-800 text-white border-slate-900", accent: "bg-slate-900" },
+  { wrap: "bg-gradient-to-r from-teal-50 via-cyan-50 to-teal-50 text-foreground border-teal-200", label: "text-teal-700", title: "text-foreground", card: "bg-white border-teal-200 hover:border-teal-400 shadow-sm", cardTitle: "text-teal-900", cardMeta: "text-muted-foreground", btn: "bg-teal-700 hover:bg-teal-800 text-white border-teal-700", accent: "bg-teal-500" },
+];
+
+function CategoryStrip({ category, variant }: { category: string; variant: number }) {
+  const slug = categorySlug(category);
+  const items = PRODUCTS.filter((p) => p.categorySlug === slug);
+  const scroller = useRef<HTMLDivElement | null>(null);
+  const v = STRIP_VARIANTS[variant % STRIP_VARIANTS.length];
+  const scroll = (dir: 1 | -1) => {
+    const el = scroller.current;
+    if (!el) return;
+    el.scrollBy({ left: dir * (el.clientWidth * 0.85), behavior: "smooth" });
+  };
+  if (items.length === 0) return null;
+  return (
+    <div className={`relative rounded-2xl border ${v.wrap} p-5 md:p-6 overflow-hidden`}>
+      <div className={`absolute left-0 top-6 bottom-6 w-1 rounded-r-full ${v.accent}`} />
+      <div className="flex items-end justify-between gap-4 mb-5 pl-3">
+        <div>
+          <div className={`text-[10px] uppercase tracking-[0.28em] font-medium ${v.label}`}>Category</div>
+          <h3 className={`font-display text-2xl md:text-3xl mt-1 ${v.title}`}>{category}</h3>
+          <div className={`text-xs mt-1 ${v.cardMeta}`}>{items.length} products</div>
+        </div>
+        <div className="flex items-center gap-2">
+          <button onClick={() => scroll(-1)} aria-label="Scroll left" className={`grid h-9 w-9 place-items-center rounded-full border transition-colors ${v.btn}`}><ChevronLeft className="h-4 w-4" /></button>
+          <button onClick={() => scroll(1)} aria-label="Scroll right" className={`grid h-9 w-9 place-items-center rounded-full border transition-colors ${v.btn}`}><ChevronRight className="h-4 w-4" /></button>
+          <Link to="/products/$category" params={{ category: slug }} className={`hidden md:inline-flex items-center gap-1 rounded-md border px-3 py-2 text-xs font-semibold transition-colors ${v.btn}`}>View all <ArrowRight className="h-3.5 w-3.5" /></Link>
+        </div>
+      </div>
+      <div ref={scroller} className="flex gap-4 overflow-x-auto scroll-smooth pb-2 pl-3 snap-x [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        {items.map((p) => <StripCard key={p.slug} p={p} v={v} />)}
+      </div>
+    </div>
+  );
+}
+
+function StripCard({ p, v }: { p: Product; v: typeof STRIP_VARIANTS[number] }) {
+  const model = p.specs.Model ?? "";
+  return (
+    <Link to="/products/$category/$product" params={{ category: p.categorySlug, product: p.slug }} className={`group snap-start shrink-0 w-[240px] rounded-xl border overflow-hidden transition-all ${v.card}`}>
+      <div className="relative aspect-[4/3] overflow-hidden bg-black/5">
+        <img src={productBg} alt="" aria-hidden className="absolute inset-0 h-full w-full object-cover opacity-30 transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+        <div className="absolute inset-0 grid place-items-center p-4 text-center">
+          <div className={`font-display text-lg leading-tight ${v.cardTitle}`}>{model || "TOP LINE"}</div>
+        </div>
+      </div>
+      <div className="p-3">
+        <div className={`text-[13px] font-medium line-clamp-2 leading-snug ${v.cardTitle}`}>{p.title}</div>
+        <div className={`mt-1 text-[11px] ${v.cardMeta}`}>View details →</div>
+      </div>
+    </Link>
   );
 }
