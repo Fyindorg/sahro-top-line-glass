@@ -1,10 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { CATEGORIES, categorySlug, countByCategory, waLink } from "@/lib/products";
+import { useRef } from "react";
+import { CATEGORIES, PRODUCTS, categorySlug, countByCategory, waLink, type Product } from "@/lib/products";
 import hero from "@/assets/hero.jpg";
 import about from "@/assets/about.jpg";
-import { ArrowRight, Factory, ShieldCheck, Globe2 } from "lucide-react";
-import { WhatsAppIcon } from "@/components/WhatsAppIcon";
+import productBg from "@/assets/product-bg.jpg";
+import { ArrowRight, ChevronLeft, ChevronRight, Factory, ShieldCheck, Globe2 } from "lucide-react";
+import { WhatsAppIcon, WhatsAppSolidIcon } from "@/components/WhatsAppIcon";
 import { CountUp } from "@/components/CountUp";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
