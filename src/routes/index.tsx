@@ -73,35 +73,25 @@ function Home() {
         </div>
       </section>
 
-      {/* CATEGORIES */}
-      <section className="container-tight py-20">
-        <div className="flex items-end justify-between flex-wrap gap-4 mb-10">
+      {/* CATEGORY STRIPS */}
+      <section className="container-tight py-16">
+        <div className="flex items-end justify-between flex-wrap gap-4 mb-8">
           <div>
             <div className="text-xs uppercase tracking-[0.22em] text-gold">Product Range</div>
-            <h2 className="font-display text-4xl mt-2">15 categories, hundreds of SKUs</h2>
+            <h2 className="font-display text-4xl mt-2">{CATEGORIES.length} categories, {PRODUCTS.length}+ SKUs</h2>
           </div>
           <Link to="/products" className="text-sm font-medium underline-grow">View all products →</Link>
         </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {CATEGORIES.map((c) => {
-            const slug = categorySlug(c);
-            return (
-              <Link
-                key={c}
-                to="/products/$category"
-                params={{ category: slug }}
-                className="group rounded-xl border border-border bg-card p-6 lift relative overflow-hidden"
-              >
-                <div className="text-xs text-muted-foreground">{counts[slug] ?? 0} products</div>
-                <div className="mt-2 font-display text-xl group-hover:text-gold transition-colors">{c}</div>
-                <ArrowRight className="absolute right-5 bottom-5 h-4 w-4 text-muted-foreground group-hover:text-gold group-hover:translate-x-1 transition-all" />
-              </Link>
-            );
-          })}
+
+        <div className="space-y-10">
+          {CATEGORIES.map((c, idx) => (
+            <CategoryStrip key={c} category={c} variant={idx % 4} />
+          ))}
         </div>
       </section>
 
       {/* WHY */}
+
       <section className="bg-surface border-y border-border">
         <div className="container-tight py-20 grid lg:grid-cols-2 gap-12 items-center">
           <div className="group overflow-hidden rounded-2xl shadow-card">
