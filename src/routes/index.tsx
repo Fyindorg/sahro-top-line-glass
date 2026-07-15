@@ -47,7 +47,7 @@ function Home() {
               Explore Products <ArrowRight className="h-4 w-4" />
             </Link>
             <a href={waLink("Hi, I would like to send an enquiry about Top Line Glass Products Accessories.")} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-md border border-white/20 bg-white/5 px-5 py-3 text-sm font-semibold backdrop-blur hover:bg-white/10">
-              <WhatsAppIcon className="h-4 w-4" /> Send Enquiry on WhatsApp
+              <WhatsAppSolidIcon className="h-4 w-4" /> Send Enquiry on WhatsApp
             </a>
           </div>
         </div>
