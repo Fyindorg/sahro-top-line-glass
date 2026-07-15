@@ -1,11 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useRef } from "react";
-import { CATEGORIES, PRODUCTS, categorySlug, countByCategory, waLink, type Product } from "@/lib/products";
+import { CATEGORIES, PRODUCTS, categorySlug, waLink, type Product } from "@/lib/products";
 import hero from "@/assets/hero.jpg";
 import about from "@/assets/about.jpg";
 import productBg from "@/assets/product-bg.jpg";
 import { ArrowRight, ChevronLeft, ChevronRight, Factory, ShieldCheck, Globe2 } from "lucide-react";
-import { WhatsAppIcon, WhatsAppSolidIcon } from "@/components/WhatsAppIcon";
+import { WhatsAppSolidIcon } from "@/components/WhatsAppIcon";
 import { CountUp } from "@/components/CountUp";
 
 
