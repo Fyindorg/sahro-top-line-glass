@@ -56,7 +56,7 @@ function Contact() {
             <span className="text-xs font-medium text-muted-foreground">Message</span>
             <textarea required rows={5} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} className="mt-1 w-full rounded-md border border-input bg-background px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring resize-none" />
           </label>
-          <button type="submit" className="inline-flex items-center gap-2 rounded-md gradient-gold px-5 py-3 text-sm font-semibold text-gold-foreground lift">
+          <button type="submit" className="inline-flex items-center gap-2 rounded-md gradient-gold px-5 py-3 text-sm font-semibold text-gold-foreground lift cursor-pointer hover:opacity-95">
             <Send className="h-4 w-4" /> Send Message
           </button>
           {sent && <div className="text-xs text-muted-foreground">Opening WhatsApp with your message…</div>}
