@@ -45,12 +45,12 @@ function Catalogues() {
             download={c.filename}
             className="group rounded-2xl border border-border bg-card overflow-hidden lift flex flex-col"
           >
-            <div className="relative aspect-[3/4] overflow-hidden bg-muted">
+            <div className="relative aspect-[1/1.414] overflow-hidden bg-white flex items-center justify-center p-3">
               {c.thumbnail ? (
                 <img
                   src={c.thumbnail}
                   alt={`${c.title} — first page preview`}
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="max-h-full max-w-full object-contain transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
                 />
               ) : (

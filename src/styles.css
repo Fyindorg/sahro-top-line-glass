@@ -43,32 +43,32 @@
 
 :root {
   --radius: 0.5rem;
-  --background: oklch(0.985 0.005 80);
-  --foreground: oklch(0.18 0.02 250);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.18 0.02 250);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.18 0.02 250);
-  --primary: oklch(0.22 0.04 250);
-  --primary-foreground: oklch(0.98 0.005 80);
-  --secondary: oklch(0.95 0.01 80);
-  --secondary-foreground: oklch(0.22 0.04 250);
-  --muted: oklch(0.95 0.008 80);
-  --muted-foreground: oklch(0.45 0.02 250);
-  --accent: oklch(0.93 0.02 80);
-  --accent-foreground: oklch(0.22 0.04 250);
+  --background: #f8faf9;
+  --foreground: #0f2a1c;
+  --card: #ffffff;
+  --card-foreground: #0f2a1c;
+  --popover: #ffffff;
+  --popover-foreground: #0f2a1c;
+  --primary: #006c35;
+  --primary-foreground: #f8faf9;
+  --secondary: #e6f0ea;
+  --secondary-foreground: #006c35;
+  --muted: #eef3f0;
+  --muted-foreground: #4a5b52;
+  --accent: #dbe9e0;
+  --accent-foreground: #006c35;
   --destructive: oklch(0.6 0.22 25);
-  --destructive-foreground: oklch(0.98 0.005 80);
-  --border: oklch(0.9 0.01 80);
-  --input: oklch(0.9 0.01 80);
-  --ring: oklch(0.65 0.1 75);
-  --brand: oklch(0.22 0.04 250);
-  --brand-foreground: oklch(0.98 0.005 80);
-  --gold: oklch(0.72 0.13 78);
-  --gold-foreground: oklch(0.18 0.02 250);
-  --ink: oklch(0.14 0.02 250);
-  --surface: oklch(0.98 0.005 80);
-  --whatsapp: oklch(0.62 0.16 145);
+  --destructive-foreground: #f8faf9;
+  --border: #d6e2db;
+  --input: #d6e2db;
+  --ring: #006c35;
+  --brand: #006c35;
+  --brand-foreground: #f8faf9;
+  --gold: #c9a24a;
+  --gold-foreground: #0f2a1c;
+  --ink: #0f2a1c;
+  --surface: #f8faf9;
+  --whatsapp: #25d366;
 }
 
 @layer base {
@@ -81,8 +81,8 @@
 @layer utilities {
   .container-tight { max-width: 1240px; margin-inline: auto; padding-inline: 1.25rem; }
   .text-balance { text-wrap: balance; }
-  .gradient-brand { background: linear-gradient(135deg, oklch(0.18 0.02 250), oklch(0.28 0.05 250)); }
-  .gradient-gold { background: linear-gradient(135deg, oklch(0.78 0.12 78), oklch(0.62 0.14 60)); }
+  .gradient-brand { background: linear-gradient(135deg, #005228, #008a44); }
+  .gradient-gold { background: linear-gradient(135deg, #d9b25a, #b2863a); }
 
   .product-tile {
     position: relative; overflow: hidden;
