@@ -1,13 +1,24 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { CATEGORIES, PRODUCTS, categorySlug, waLink, type Product } from "@/lib/products";
-import hero from "@/assets/hero.jpg";
 import about from "@/assets/about.jpg";
 import productBg from "@/assets/product-bg.jpg";
+import heroBathroom from "@/assets/hero-bathroom.jpg";
+import heroGlassDoor from "@/assets/hero-glass-door.jpg";
+import heroAutoSliding from "@/assets/hero-auto-sliding.jpg";
+import heroSwingDoor from "@/assets/hero-swing-door.jpg";
+import heroHandrail from "@/assets/hero-handrail.jpg";
 import { ArrowRight, ChevronLeft, ChevronRight, Factory, ShieldCheck, Globe2 } from "lucide-react";
 import { WhatsAppSolidIcon } from "@/components/WhatsAppIcon";
 import { CountUp } from "@/components/CountUp";
 
+const HERO_SLIDES = [
+  { img: heroBathroom, kicker: "Bathroom Accessories", title: "Premium bathroom hardware, crafted for modern living.", sub: "Chrome-finished towel rails, glass shelves, holders and connectors engineered to last." },
+  { img: heroGlassDoor, kicker: "Glass Door Accessories", title: "Glass door hardware, engineered in-house.", sub: "Hinges, patch fittings, clamps and locks for frameless glass door systems." },
+  { img: heroAutoSliding, kicker: "Automatic Sliding Doors", title: "Automatic sliding door systems for commercial entrances.", sub: "Smooth, reliable operation with sensors, tracks and premium mechanisms." },
+  { img: heroSwingDoor, kicker: "Swing Doors", title: "Frameless swing doors with floor spring precision.", sub: "Floor hinges and patch fittings that keep heavy glass doors perfectly balanced." },
+  { img: heroHandrail, kicker: "Handrails & Balustrades", title: "Stainless steel handrails & glass balustrades.", sub: "Star handrail systems and balustrade accessories for staircases, balconies and terraces." },
+];
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -24,34 +35,82 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
+function HeroCarousel() {
+  const [idx, setIdx] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const total = HERO_SLIDES.length;
+
+  useEffect(() => {
+    if (paused) return;
+    const t = setInterval(() => setIdx((i) => (i + 1) % total), 5500);
+    return () => clearInterval(t);
+  }, [paused, total]);
+
+  const go = (dir: 1 | -1) => setIdx((i) => (i + dir + total) % total);
+
+  return (
+    <section
+      className="relative overflow-hidden gradient-brand text-brand-foreground"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      aria-roledescription="carousel"
+    >
+      {HERO_SLIDES.map((s, i) => (
+        <div
+          key={i}
+          className={`absolute inset-0 transition-opacity duration-1000 ${i === idx ? "opacity-100" : "opacity-0"}`}
+          aria-hidden={i !== idx}
+        >
+          <img src={s.img} alt={s.kicker} className="h-full w-full object-cover" loading={i === 0 ? "eager" : "lazy"} width={1920} height={1080} />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/80 to-primary/30" />
+        </div>
+      ))}
+
+      <div className="container-tight relative py-24 md:py-32 max-w-3xl">
+        {HERO_SLIDES.map((s, i) => (
+          <div key={i} className={i === idx ? "block" : "hidden"}>
+            <div className="text-xs uppercase tracking-[0.3em] text-gold mb-4 anim-fade-up">{s.kicker} · Riyadh, KSA</div>
+            <h1 className="font-display text-5xl md:text-6xl leading-[1.05] text-balance anim-fade-up">{s.title}</h1>
+            <p className="mt-6 text-lg text-primary-foreground/80 max-w-2xl anim-fade-up">{s.sub}</p>
+          </div>
+        ))}
+        <div className="mt-8 flex flex-wrap gap-3 anim-fade-up">
+          <Link to="/products" className="inline-flex items-center gap-2 rounded-md gradient-gold px-5 py-3 text-sm font-semibold text-gold-foreground lift">
+            Explore Products <ArrowRight className="h-4 w-4" />
+          </Link>
+          <a href={waLink("Hi, I would like to send an enquiry about Top Line Glass Products Accessories.")} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-md border border-white/20 bg-white/5 px-5 py-3 text-sm font-semibold backdrop-blur hover:bg-white/10">
+            <WhatsAppSolidIcon className="h-4 w-4" /> Send Enquiry on WhatsApp
+          </a>
+        </div>
+      </div>
+
+      {/* Controls */}
+      <button onClick={() => go(-1)} aria-label="Previous slide" className="absolute left-3 md:left-6 top-1/2 -translate-y-1/2 grid h-11 w-11 place-items-center rounded-full bg-white/10 hover:bg-white/25 backdrop-blur border border-white/20 text-white transition">
+        <ChevronLeft className="h-5 w-5" />
+      </button>
+      <button onClick={() => go(1)} aria-label="Next slide" className="absolute right-3 md:right-6 top-1/2 -translate-y-1/2 grid h-11 w-11 place-items-center rounded-full bg-white/10 hover:bg-white/25 backdrop-blur border border-white/20 text-white transition">
+        <ChevronRight className="h-5 w-5" />
+      </button>
+
+      {/* Dots */}
+      <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+        {HERO_SLIDES.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setIdx(i)}
+            aria-label={`Go to slide ${i + 1}`}
+            className={`h-1.5 rounded-full transition-all ${i === idx ? "w-8 bg-gold" : "w-4 bg-white/40 hover:bg-white/70"}`}
+          />
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function Home() {
   return (
     <div>
-      {/* HERO */}
-      <section className="relative overflow-hidden gradient-brand text-brand-foreground">
-        <div className="absolute inset-0 opacity-30">
-          <img src={hero} alt="" aria-hidden className="h-full w-full object-cover img-zoom" />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/80 to-primary/20" />
-        <div className="container-tight relative py-24 md:py-32 max-w-3xl">
-          <div className="text-xs uppercase tracking-[0.3em] text-gold mb-4 anim-fade-up">Manufacturer · Riyadh, KSA</div>
-          <h1 className="font-display text-5xl md:text-6xl leading-[1.05] text-balance anim-fade-up">
-            Premium glass hardware &amp; bathroom accessories, engineered in-house.
-          </h1>
-          <p className="mt-6 text-lg text-primary-foreground/80 max-w-2xl anim-fade-up">
-            Top Line Glass Products Accessories manufactures glass door control systems, frameless shower hardware,
-            bathroom mirrors and door &amp; window fittings — exported to over five GCC markets.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-3 anim-fade-up">
-            <Link to="/products" className="inline-flex items-center gap-2 rounded-md gradient-gold px-5 py-3 text-sm font-semibold text-gold-foreground lift">
-              Explore Products <ArrowRight className="h-4 w-4" />
-            </Link>
-            <a href={waLink("Hi, I would like to send an enquiry about Top Line Glass Products Accessories.")} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-md border border-white/20 bg-white/5 px-5 py-3 text-sm font-semibold backdrop-blur hover:bg-white/10">
-              <WhatsAppSolidIcon className="h-4 w-4" /> Send Enquiry on WhatsApp
-            </a>
-          </div>
-        </div>
-      </section>
+      <HeroCarousel />
 
       {/* STATS */}
       <section className="border-b border-border bg-surface">
