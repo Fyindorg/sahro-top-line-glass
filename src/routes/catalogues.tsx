@@ -4,7 +4,7 @@ import { waLink } from "@/lib/products";
 import { FileDown, MessageCircle } from "lucide-react";
 import cataloguesData from "@/data/catalogues.json";
 
-type Catalogue = { title: string; filename: string; url: string; size: number };
+type Catalogue = { title: string; filename: string; url: string; size: number; thumbnail?: string };
 const catalogues = cataloguesData as Catalogue[];
 
 function formatSize(bytes: number) {
@@ -43,15 +43,33 @@ function Catalogues() {
             target="_blank"
             rel="noopener noreferrer"
             download={c.filename}
-            className="group rounded-2xl border border-border bg-card p-6 lift relative overflow-hidden flex flex-col"
+            className="group rounded-2xl border border-border bg-card overflow-hidden lift flex flex-col"
           >
-            <div className="grid h-12 w-12 place-items-center rounded-md gradient-gold text-gold-foreground transition-transform group-hover:scale-110">
-              <FileDown className="h-5 w-5" />
+            <div className="relative aspect-[3/4] overflow-hidden bg-muted">
+              {c.thumbnail ? (
+                <img
+                  src={c.thumbnail}
+                  alt={`${c.title} — first page preview`}
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                />
+              ) : (
+                <div className="h-full w-full grid place-items-center">
+                  <FileDown className="h-10 w-10 text-muted-foreground" />
+                </div>
+              )}
+              <div className="absolute top-3 left-3 rounded-md gradient-gold text-gold-foreground text-[10px] uppercase tracking-[0.18em] font-semibold px-2 py-1">PDF</div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute bottom-3 right-3 grid h-10 w-10 place-items-center rounded-full bg-white text-primary opacity-0 group-hover:opacity-100 transition-all translate-y-2 group-hover:translate-y-0 shadow-lg">
+                <FileDown className="h-4 w-4" />
+              </div>
             </div>
-            <h2 className="font-display text-xl mt-5 leading-tight">{c.title}</h2>
-            <div className="mt-auto pt-5 flex items-center justify-between text-xs text-muted-foreground">
-              <span className="uppercase tracking-[0.18em]">PDF</span>
-              <span>{formatSize(c.size)}</span>
+            <div className="p-5 flex flex-col flex-1">
+              <h2 className="font-display text-lg leading-tight">{c.title}</h2>
+              <div className="mt-auto pt-4 flex items-center justify-between text-xs text-muted-foreground">
+                <span className="uppercase tracking-[0.18em]">Download</span>
+                <span>{formatSize(c.size)}</span>
+              </div>
             </div>
           </a>
         ))}
