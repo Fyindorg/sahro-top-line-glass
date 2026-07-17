@@ -61,7 +61,7 @@ function HeroCarousel() {
           className={`absolute inset-0 transition-opacity duration-1000 ${i === idx ? "opacity-100" : "opacity-0"}`}
           aria-hidden={i !== idx}
         >
-          <img src={s.img} alt={s.kicker} className="h-full w-full object-cover" loading={i === 0 ? "eager" : "lazy"} width={1920} height={1080} />
+          <img src={s.img} alt={s.kicker} className="h-full w-full object-cover" loading={i === 0 ? "eager" : "lazy"} fetchPriority={i === 0 ? "high" : "auto"} decoding={i === 0 ? "sync" : "async"} width={1920} height={1080} />
           <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/80 to-primary/30" />
         </div>
       ))}
