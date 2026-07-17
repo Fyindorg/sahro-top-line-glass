@@ -70,7 +70,7 @@ function ProductPage() {
         {/* IMAGE */}
         <div className="group rounded-2xl border border-border bg-card shadow-card overflow-hidden">
           <div className="product-tile tile-shine aspect-square relative">
-            <img src={productBg} alt="" aria-hidden className="absolute inset-0 h-full w-full object-cover opacity-25 img-zoom" />
+            <img src={productBg} alt="" aria-hidden width={800} height={800} decoding="async" className="absolute inset-0 h-full w-full object-cover opacity-25 img-zoom" />
             <div className="absolute inset-0 grid place-items-center p-10 text-center">
               <div>
                 <div className="text-[11px] uppercase tracking-[0.25em] text-muted-foreground">{p.category}</div>
