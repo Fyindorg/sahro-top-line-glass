@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://sahro-top-line-glass.lovable.app/sitemap.xml
