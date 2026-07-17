@@ -2,7 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CATEGORY_BY_SLUG, findProduct, productsByCategory, waLink } from "@/lib/products";
 import { ProductTile } from "@/components/ProductTile";
-import productBg from "@/assets/product-bg.jpg";
+import productBg from "@/assets/product-bg.webp";
 import { MessageCircle, Check } from "lucide-react";
 
 export const Route = createFileRoute("/products/$category/$product")({

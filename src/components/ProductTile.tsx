@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import type { Product } from "@/lib/products";
-import productBg from "@/assets/product-bg.jpg";
+import productBg from "@/assets/product-bg.webp";
 
 export function ProductTile({ p }: { p: Product }) {
   const model = p.specs.Model ?? p.specs.Type ?? "";

@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import about from "@/assets/about.jpg";
+import about from "@/assets/about.webp";
 import { Factory, ShieldCheck } from "lucide-react";
 
 export const Route = createFileRoute("/about")({
