@@ -50,8 +50,11 @@ function Catalogues() {
                 <img
                   src={c.thumbnail}
                   alt={`${c.title} — first page preview`}
+                  width={420}
+                  height={594}
                   className="max-h-full max-w-full object-contain transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
+                  decoding="async"
                 />
               ) : (
                 <div className="h-full w-full grid place-items-center">
