@@ -236,7 +236,7 @@ function StripCard({ p, v }: { p: Product; v: typeof STRIP_VARIANTS[number] }) {
   return (
     <Link to="/products/$category/$product" params={{ category: p.categorySlug, product: p.slug }} className={`group snap-start shrink-0 w-[240px] rounded-xl border overflow-hidden transition-all ${v.card}`}>
       <div className="relative aspect-[4/3] overflow-hidden bg-black/5">
-        <img src={productBg} alt="" aria-hidden className="absolute inset-0 h-full w-full object-cover opacity-30 transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+        <img src={productBg} alt="" aria-hidden width={240} height={180} className="absolute inset-0 h-full w-full object-cover opacity-30 transition-transform duration-500 group-hover:scale-110" loading="lazy" decoding="async" />
         <div className="absolute inset-0 grid place-items-center p-4 text-center">
           <div className={`font-display text-lg leading-tight ${v.cardTitle}`}>{model || "TOP LINE"}</div>
         </div>
