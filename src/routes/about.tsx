@@ -11,7 +11,7 @@ export const Route = createFileRoute("/about")({
       { property: "og:title", content: "About Top Line Glass Products Accessories — Glass Hardware Manufacturer" },
       { property: "og:description", content: "In-house R&D, production and sales for glass hardware fittings, door control hardware, bathroom hardware and door & window accessories." },
       { property: "og:url", content: "/about" },
-      { property: "og:image", content: "/og-about.jpg" },
+      
     ],
     links: [{ rel: "canonical", href: "/about" }],
   }),
