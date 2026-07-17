@@ -1,13 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { CATEGORIES, PRODUCTS, categorySlug, waLink, type Product } from "@/lib/products";
-import about from "@/assets/about.jpg";
-import productBg from "@/assets/product-bg.jpg";
-import heroBathroom from "@/assets/hero-bathroom.jpg";
-import heroGlassDoor from "@/assets/hero-glass-door.jpg";
-import heroAutoSliding from "@/assets/hero-auto-sliding.jpg";
-import heroWindow from "@/assets/hero-window.jpg";
-import heroHardware from "@/assets/hero-hardware.jpg";
+import about from "@/assets/about.webp";
+import productBg from "@/assets/product-bg.webp";
+import heroBathroom from "@/assets/hero-bathroom.webp";
+import heroGlassDoor from "@/assets/hero-glass-door.webp";
+import heroAutoSliding from "@/assets/hero-auto-sliding.webp";
+import heroWindow from "@/assets/hero-window.webp";
+import heroHardware from "@/assets/hero-hardware.webp";
 import { ArrowRight, ChevronLeft, ChevronRight, Factory, ShieldCheck, Globe2 } from "lucide-react";
 import { WhatsAppSolidIcon } from "@/components/WhatsAppIcon";
 import { CountUp } from "@/components/CountUp";
@@ -28,7 +28,7 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "Top Line Glass Products Accessories — Glass Hardware & Bathroom Accessories" },
       { property: "og:description", content: "Direct manufacturer serving KSA, UAE, Bahrain & Kuwait with premium glass door control systems and bathroom hardware." },
       { property: "og:url", content: "/" },
-      { property: "og:image", content: "/og-home.jpg" },
+      
     ],
     links: [{ rel: "canonical", href: "/" }],
   }),
@@ -61,7 +61,7 @@ function HeroCarousel() {
           className={`absolute inset-0 transition-opacity duration-1000 ${i === idx ? "opacity-100" : "opacity-0"}`}
           aria-hidden={i !== idx}
         >
-          <img src={s.img} alt={s.kicker} className="h-full w-full object-cover" loading={i === 0 ? "eager" : "lazy"} width={1920} height={1080} />
+          <img src={s.img} alt={s.kicker} className="h-full w-full object-cover" loading={i === 0 ? "eager" : "lazy"} fetchPriority={i === 0 ? "high" : "auto"} decoding={i === 0 ? "sync" : "async"} width={1920} height={1080} />
           <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/80 to-primary/30" />
         </div>
       ))}
@@ -236,7 +236,7 @@ function StripCard({ p, v }: { p: Product; v: typeof STRIP_VARIANTS[number] }) {
   return (
     <Link to="/products/$category/$product" params={{ category: p.categorySlug, product: p.slug }} className={`group snap-start shrink-0 w-[240px] rounded-xl border overflow-hidden transition-all ${v.card}`}>
       <div className="relative aspect-[4/3] overflow-hidden bg-black/5">
-        <img src={productBg} alt="" aria-hidden className="absolute inset-0 h-full w-full object-cover opacity-30 transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+        <img src={productBg} alt="" aria-hidden width={240} height={180} className="absolute inset-0 h-full w-full object-cover opacity-30 transition-transform duration-500 group-hover:scale-110" loading="lazy" decoding="async" />
         <div className="absolute inset-0 grid place-items-center p-4 text-center">
           <div className={`font-display text-lg leading-tight ${v.cardTitle}`}>{model || "TOP LINE"}</div>
         </div>

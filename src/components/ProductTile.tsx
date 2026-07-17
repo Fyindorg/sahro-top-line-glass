@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import type { Product } from "@/lib/products";
-import productBg from "@/assets/product-bg.jpg";
+import productBg from "@/assets/product-bg.webp";
 
 export function ProductTile({ p }: { p: Product }) {
   const model = p.specs.Model ?? p.specs.Type ?? "";
@@ -15,8 +15,11 @@ export function ProductTile({ p }: { p: Product }) {
           src={productBg}
           alt=""
           aria-hidden
+          width={640}
+          height={480}
           className="absolute inset-0 h-full w-full object-cover opacity-25 img-zoom"
           loading="lazy"
+          decoding="async"
         />
         <div className="absolute inset-0 grid place-items-center p-6 text-center">
           <div>
