@@ -6,8 +6,8 @@ import productBg from "@/assets/product-bg.jpg";
 import heroBathroom from "@/assets/hero-bathroom.jpg";
 import heroGlassDoor from "@/assets/hero-glass-door.jpg";
 import heroAutoSliding from "@/assets/hero-auto-sliding.jpg";
-import heroSwingDoor from "@/assets/hero-swing-door.jpg";
-import heroHandrail from "@/assets/hero-handrail.jpg";
+import heroWindow from "@/assets/hero-window.jpg";
+import heroHardware from "@/assets/hero-hardware.jpg";
 import { ArrowRight, ChevronLeft, ChevronRight, Factory, ShieldCheck, Globe2 } from "lucide-react";
 import { WhatsAppSolidIcon } from "@/components/WhatsAppIcon";
 import { CountUp } from "@/components/CountUp";
@@ -16,8 +16,8 @@ const HERO_SLIDES = [
   { img: heroBathroom, kicker: "Bathroom Accessories", title: "Premium bathroom hardware, crafted for modern living.", sub: "Chrome-finished towel rails, glass shelves, holders and connectors engineered to last." },
   { img: heroGlassDoor, kicker: "Glass Door Accessories", title: "Glass door hardware, engineered in-house.", sub: "Hinges, patch fittings, clamps and locks for frameless glass door systems." },
   { img: heroAutoSliding, kicker: "Automatic Sliding Doors", title: "Automatic sliding door systems for commercial entrances.", sub: "Smooth, reliable operation with sensors, tracks and premium mechanisms." },
-  { img: heroSwingDoor, kicker: "Swing Doors", title: "Frameless swing doors with floor spring precision.", sub: "Floor hinges and patch fittings that keep heavy glass doors perfectly balanced." },
-  { img: heroHandrail, kicker: "Handrails & Balustrades", title: "Stainless steel handrails & glass balustrades.", sub: "Star handrail systems and balustrade accessories for staircases, balconies and terraces." },
+  { img: heroWindow, kicker: "Window Accessories", title: "Window hardware built for the Gulf climate.", sub: "Durable handles, rollers, hinges, locks and multi-point systems for aluminium and uPVC windows." },
+  { img: heroHardware, kicker: "Hardware Accessories", title: "The complete range of architectural hardware.", sub: "Brackets, clamps, screws, bolts, closers and specialist fittings for every installation." },
 ];
 
 export const Route = createFileRoute("/")({
