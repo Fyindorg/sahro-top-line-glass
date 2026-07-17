@@ -28,7 +28,7 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "Top Line Glass Products Accessories — Glass Hardware & Bathroom Accessories" },
       { property: "og:description", content: "Direct manufacturer serving KSA, UAE, Bahrain & Kuwait with premium glass door control systems and bathroom hardware." },
       { property: "og:url", content: "/" },
-      { property: "og:image", content: "/og-home.jpg" },
+      
     ],
     links: [{ rel: "canonical", href: "/" }],
   }),
