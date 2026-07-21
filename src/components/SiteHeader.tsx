@@ -48,23 +48,19 @@ export function SiteHeader() {
               {n.hasDropdown && (
                 <div className="invisible opacity-0 translate-y-1 group-hover/nav:visible group-hover/nav:opacity-100 group-hover/nav:translate-y-0 transition-all duration-200 fixed left-1/2 -translate-x-1/2 top-[80px] w-[min(920px,calc(100vw-2rem))] px-2">
                   <div className="rounded-xl border border-border bg-popover shadow-lift p-3 grid grid-cols-2 md:grid-cols-3 gap-1.5 max-h-[70vh] overflow-y-auto">
-                    {CATEGORIES.map((c) => {
-                      const cfg = CAT_ICON[c] ?? { icon: Wrench, tint: "from-muted to-transparent text-muted-foreground" };
-                      const Icon = cfg.icon;
-                      return (
-                        <Link
-                          key={c}
-                          to="/products/$category"
-                          params={{ category: categorySlug(c) }}
-                          className="flex items-center gap-3 rounded-md px-2.5 py-2 text-sm hover:bg-accent transition-colors"
-                        >
-                          <span className={`grid h-9 w-9 shrink-0 place-items-center rounded-md bg-gradient-to-br ${cfg.tint}`}>
-                            <Icon className="h-4 w-4" />
-                          </span>
-                          <span className="leading-tight">{c}</span>
-                        </Link>
-                      );
-                    })}
+                    {CATEGORIES.map((c, i) => (
+                      <Link
+                        key={c}
+                        to="/products/$category"
+                        params={{ category: categorySlug(c) }}
+                        className="flex items-center gap-3 rounded-md px-2.5 py-2 text-sm hover:bg-accent transition-colors"
+                      >
+                        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-md bg-primary text-primary-foreground text-sm font-bold">
+                          {i + 1}
+                        </span>
+                        <span className="leading-tight">{c}</span>
+                      </Link>
+                    ))}
                   </div>
                 </div>
               )}
