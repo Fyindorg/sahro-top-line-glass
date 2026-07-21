@@ -69,15 +69,20 @@ function ProductPage() {
       <div className="mt-6 grid lg:grid-cols-2 gap-10">
         {/* IMAGE */}
         <div className="group rounded-2xl border border-border bg-card shadow-card overflow-hidden">
-          <div className="product-tile tile-shine aspect-square relative">
-            <img src={productBg} alt="" aria-hidden width={800} height={800} decoding="async" className="absolute inset-0 h-full w-full object-cover opacity-25 img-zoom" />
-            <div className="absolute inset-0 grid place-items-center p-10 text-center">
-              <div>
-                <div className="text-[11px] uppercase tracking-[0.25em] text-muted-foreground">{p.category}</div>
-                <div className="mt-3 font-display text-5xl text-ink">{model || "TOP LINE"}</div>
-                <div className="mt-3 text-xs text-muted-foreground">Top Line Glass Products Accessories · Riyadh, KSA</div>
+          <div className="product-tile tile-shine aspect-square relative bg-surface">
+            <img
+              src={categoryImage(category)}
+              alt={`${p.title} — ${p.category}`}
+              width={800}
+              height={800}
+              decoding="async"
+              className="absolute inset-0 h-full w-full object-cover img-zoom"
+            />
+            {model && (
+              <div className="absolute bottom-3 right-3 rounded bg-background/85 backdrop-blur px-3 py-1.5 text-xs font-medium tracking-wide text-foreground">
+                {model}
               </div>
-            </div>
+            )}
           </div>
         </div>
 
