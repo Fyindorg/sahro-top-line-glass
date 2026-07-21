@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { WhatsAppSolidIcon } from "./WhatsAppIcon";
-import logo from "@/assets/sahro-logo.png.asset.json";
+import logo from "@/assets/sahro-logo-v2.png.asset.json";
 
 const CAT_ICON: Record<string, { icon: LucideIcon; tint: string }> = {
   "Automatic Sliding Door System": { icon: DoorOpen, tint: "from-sky-500/20 to-sky-500/5 text-sky-500" },
