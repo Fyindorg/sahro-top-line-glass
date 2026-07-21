@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { CATEGORIES, categorySlug } from "@/lib/products";
 import { Mail, Phone, MapPin } from "lucide-react";
-import logo from "@/assets/sahro-logo.png.asset.json";
+import logo from "@/assets/sahro-logo-v2.png.asset.json";
 
 export function SiteFooter() {
   return (
