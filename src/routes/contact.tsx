@@ -91,10 +91,10 @@ function Contact() {
           </div>
 
           <div className="rounded-2xl border border-border overflow-hidden shadow-card">
-            <a href="https://maps.app.goo.gl/mRdr8szVSBAR2Pin7" target="_blank" rel="noopener noreferrer" className="block">
+            <a href="https://maps.app.goo.gl/Z3ay3HAzssH3tVoc6" target="_blank" rel="noopener noreferrer" className="block">
               <iframe
-                title="Top Line Glass Products Accessories location on Google Maps"
-                src="https://www.google.com/maps?q=%D8%B4%D8%B1%D9%83%D8%A9+%D8%AA%D9%88%D8%A8+%D9%84%D8%A7%D9%8A%D9%86+%D9%84%D9%85%D9%86%D8%AA%D8%AC%D8%A7%D8%AA+%D9%88%D8%A7%D9%83%D8%B3%D8%B3%D9%88%D8%A7%D8%B1%D8%A7%D8%AA+%D8%A7%D9%84%D8%B2%D8%AC%D8%A7%D8%AC+Riyadh&output=embed"
+                title="Sahro Glass Products Accessories Co. LTD location on Google Maps"
+                src="https://www.google.com/maps?q=Sahro+Glass+Products+Accessories+Co.+LTD,+Al+Madina+Al+Munawwarah+Rd,+Riyadh&output=embed"
                 className="w-full aspect-[4/3] border-0"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"

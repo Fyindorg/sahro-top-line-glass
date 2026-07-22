@@ -5,11 +5,12 @@ import { Menu, X, ChevronDown } from "lucide-react";
 import { WhatsAppSolidIcon } from "./WhatsAppIcon";
 import logo from "@/assets/sahro-logo-v2.png.asset.json";
 
-type NavItem = { to: "/about" | "/products" | "/catalogues" | "/contact"; label: string; hasDropdown?: boolean };
+type NavItem = { to: "/about" | "/products" | "/catalogues" | "/projects" | "/contact"; label: string; hasDropdown?: boolean };
 const NAV: NavItem[] = [
   { to: "/about", label: "About Us" },
   { to: "/products", label: "Products", hasDropdown: true },
   { to: "/catalogues", label: "Catalogues" },
+  { to: "/projects", label: "Projects" },
   { to: "/contact", label: "Contact Us" },
 ];
 
