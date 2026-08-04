@@ -1,10 +1,11 @@
 import { Link } from "@tanstack/react-router";
 import type { Product } from "@/lib/products";
-import { categoryImage } from "@/lib/category-images";
+import { productImage } from "@/lib/product-images";
 
 export function ProductTile({ p }: { p: Product }) {
   const model = p.specs.Model ?? p.specs.Type ?? "";
-  const img = categoryImage(p.categorySlug);
+  const img = productImage(p);
+
   return (
     <Link
       to="/products/$category/$product"
