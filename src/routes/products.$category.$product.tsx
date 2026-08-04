@@ -2,7 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CATEGORY_BY_SLUG, findProduct, productsByCategory, waLink } from "@/lib/products";
 import { ProductTile } from "@/components/ProductTile";
-import { categoryImage } from "@/lib/category-images";
+import { productImage } from "@/lib/product-images";
 import { MessageCircle, Check } from "lucide-react";
 
 export const Route = createFileRoute("/products/$category/$product")({
@@ -71,7 +71,7 @@ function ProductPage() {
         <div className="group rounded-2xl border border-border bg-card shadow-card overflow-hidden">
           <div className="product-tile tile-shine aspect-square relative bg-surface">
             <img
-              src={categoryImage(category)}
+              src={productImage(p)}
               alt={`${p.title} — ${p.category}`}
               width={800}
               height={800}
