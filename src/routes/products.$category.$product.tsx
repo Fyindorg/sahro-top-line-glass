@@ -76,7 +76,7 @@ function ProductPage() {
               width={800}
               height={800}
               decoding="async"
-              className="absolute inset-0 h-full w-full object-cover img-zoom"
+              className="absolute inset-0 h-full w-full object-contain p-6 img-zoom"
             />
             {model && (
               <div className="absolute bottom-3 right-3 rounded bg-background/85 backdrop-blur px-3 py-1.5 text-xs font-medium tracking-wide text-foreground">

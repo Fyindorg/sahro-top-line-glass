@@ -1,6 +1,6 @@
 import { categoryImage } from "@/lib/category-images";
 
-const modules = import.meta.glob("@/assets/products-drive/*.webp", {
+const modules = import.meta.glob("../assets/products-drive/*.webp", {
   eager: true,
   query: "?url",
   import: "default",
