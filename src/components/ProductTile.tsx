@@ -1,10 +1,11 @@
 import { Link } from "@tanstack/react-router";
 import type { Product } from "@/lib/products";
-import { categoryImage } from "@/lib/category-images";
+import { productImage } from "@/lib/product-images";
 
 export function ProductTile({ p }: { p: Product }) {
   const model = p.specs.Model ?? p.specs.Type ?? "";
-  const img = categoryImage(p.categorySlug);
+  const img = productImage(p);
+
   return (
     <Link
       to="/products/$category/$product"
@@ -17,7 +18,7 @@ export function ProductTile({ p }: { p: Product }) {
           alt={`${p.category} — ${p.title}`}
           width={640}
           height={480}
-          className="absolute inset-0 h-full w-full object-cover img-zoom"
+          className="absolute inset-0 h-full w-full object-contain p-3 img-zoom"
           loading="lazy"
           decoding="async"
         />
